@@ -2,7 +2,6 @@
     /* Paleta Rebranding 2026 */
     /* Principales */
     --color-brand-red: #E60000;
-    /* Aproximación del rojo principal en la imagen */
     --color-cream: #fffde9;
     --color-black: #000000;
 
@@ -18,17 +17,15 @@
     --color-olive: #32610a;
     --color-orange: #ff6e0d;
 
-    /* Mapeo funcional */
     --font-base: 'Inter', system-ui, -apple-system, sans-serif;
     --radius-card: 24px;
     --radius-btn: 12px;
     --shadow-card: 8px 8px 0px rgba(0, 0, 0, 1);
-    /* Sombra dura estilo 'Neo-Brutalism' o Pop */
+    /* Sombra dura estilo 'Neo-Brutalism' */
 }
 
 body {
     background-color: var(--color-sky-blue);
-    /* Fondo más vibrante */
     background-image: linear-gradient(135deg, var(--color-sky-blue) 0%, var(--color-lavender) 100%);
     display: flex;
     justify-content: center;
@@ -39,76 +36,43 @@ body {
     color: var(--color-black);
 }
 
-/* CONTENEDOR PRINCIPAL */
-.dsf-container {
+/* --- CLASES OFICIALES DONAR ONLINE (.dsf) --- */
+
+/* Contenedor Principal */
+.dsf {
     background-color: var(--color-cream);
-    /* Usamos el crema como fondo de tarjeta */
     border: 4px solid var(--color-black);
-    /* Bordes negros sólidos */
     border-radius: var(--radius-card);
     padding: 40px;
     max-width: 480px;
     width: 100%;
     box-shadow: var(--shadow-card);
-    text-align: center;
+    margin: 0 auto;
+    font-family: var(--font-base);
 }
 
-/* ENCABEZADO */
-.dsf-header h2 {
+/* Títulos */
+.dsf h1,
+.dsf h2,
+.dsf h3,
+.dsf__title {
     color: var(--color-black);
-    font-size: 24px;
     font-weight: 800;
-    /* Más bold */
+    margin-bottom: 24px;
+    text-transform: uppercase;
     line-height: 1.2;
-    margin-bottom: 24px;
-    text-transform: uppercase;
 }
 
-.emoji-hand {
-    font-size: 24px;
-    margin-right: 8px;
-}
-
-/* SELECTOR DE FRECUENCIA */
-.dsf-frequency-selector {
-    display: flex;
-    gap: 16px;
-    margin-bottom: 24px;
-    background: var(--color-black);
-    padding: 4px;
-    border-radius: calc(var(--radius-btn) + 4px);
-}
-
-.frequency-btn {
-    flex: 1;
-    padding: 12px;
-    border: 2px solid transparent;
-    border-radius: var(--radius-btn);
-    background: transparent;
-    color: #fff;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.2s;
-    text-transform: uppercase;
-    font-size: 14px;
-}
-
-.frequency-btn.active {
-    background-color: var(--color-golden);
-    color: var(--color-black);
-    border: 2px solid var(--color-black);
-    box-shadow: 4px 4px 0 rgba(0, 0, 0, 1);
-}
-
-/* OPCIONES DE MONTO */
-.dsf-amount-grid {
+/* Lista de botones de Monto */
+.dsf__amount-option-list {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 12px;
     margin-bottom: 20px;
 }
 
-.amount-btn {
+/* Botón de monto individual */
+.dsf__amount-option {
     padding: 14px 0;
     border: 2px solid var(--color-black);
     border-radius: var(--radius-btn);
@@ -119,22 +83,84 @@ body {
     cursor: pointer;
     transition: all 0.2s;
     box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.amount-btn:hover {
+.dsf__amount-option:hover {
     transform: translateY(-2px);
     box-shadow: 4px 4px 0 rgba(0, 0, 0, 1);
 }
 
-.amount-btn.active {
+.dsf__amount-option--selected,
+.dsf__amount-option--active {
     background-color: var(--color-royal-blue);
     color: #fff;
     box-shadow: 4px 4px 0 rgba(0, 0, 0, 1);
     transform: translate(-2px, -2px);
+    border-color: var(--color-black);
 }
 
-/* CAJA DE IMPACTO */
-.dsf-impact-box {
+/* Inputs y Grupos */
+.dsf__group {
+    margin-bottom: 20px;
+}
+
+.dsf__group label {
+    display: block;
+    font-size: 14px;
+    color: var(--color-black);
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.dsf__group input[type="text"],
+.dsf__group input[type="number"],
+.dsf__group input[type="email"],
+.dsf__group select {
+    width: 100%;
+    padding: 14px;
+    background-color: #fff;
+    border: 2px solid var(--color-black);
+    border-radius: var(--radius-btn);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-black);
+    box-sizing: border-box;
+}
+
+.dsf__group input:focus,
+.dsf__group select:focus {
+    outline: none;
+    box-shadow: 4px 4px 0 var(--color-royal-blue);
+    border-color: var(--color-black);
+}
+
+/* Checkboxes */
+.dsf__allow-upgrade-checkbox,
+.dsf__legal-notice-checkbox {
+    accent-color: var(--color-brand-red);
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    border: 2px solid black;
+}
+
+.dsf__allow-upgrade-wrapper,
+.dsf__legal-notice-wrapper {
+    display: flex;
+    align-items: flex-start;
+    font-size: 13px;
+    color: var(--color-black);
+    margin-bottom: 16px;
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+/* Estilo especial para el mensaje de impacto (Feature no nativa, simulada como bloque de texto) */
+.dsf__impact-box-simulated {
     background-color: var(--color-lime);
     border: 2px solid var(--color-black);
     border-radius: var(--radius-btn);
@@ -143,87 +169,17 @@ body {
     display: flex;
     align-items: center;
     gap: 12px;
-    text-align: left;
     box-shadow: 4px 4px 0 rgba(0, 0, 0, 1);
-}
-
-.impact-star {
-    color: var(--color-black);
-    /* Estrella negra para contraste en lime */
-    font-size: 24px;
-    flex-shrink: 0;
-}
-
-.impact-text {
+    font-weight: 600;
     font-size: 14px;
-    color: var(--color-black);
-    line-height: 1.4;
-    font-weight: 600;
 }
 
-/* INPUT PERSONALIZADO */
-.amount-label {
-    display: block;
-    text-align: left;
-    font-size: 14px;
-    color: var(--color-black);
-    margin-bottom: 8px;
-    font-weight: 600;
+/* Botones Principales (Next) */
+.dsf__buttons-container {
+    margin-top: 24px;
 }
 
-.custom-amount-wrapper {
-    position: relative;
-    margin-bottom: 24px;
-}
-
-.currency-symbol {
-    position: absolute;
-    left: 16px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--color-black);
-    font-weight: 700;
-}
-
-.custom-input {
-    width: 100%;
-    padding: 14px 14px 14px 34px;
-    background-color: #fff;
-    border: 2px solid var(--color-black);
-    border-radius: var(--radius-btn);
-    font-size: 18px;
-    font-weight: 600;
-    color: var(--color-black);
-    box-sizing: border-box;
-}
-
-.custom-input:focus {
-    outline: none;
-    box-shadow: 4px 4px 0 var(--color-royal-blue);
-}
-
-.currency-suffix {
-    position: absolute;
-    right: 16px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-weight: 700;
-    color: var(--color-black);
-}
-
-.micro-impact-text {
-    font-size: 13px;
-    color: var(--color-black);
-    margin-bottom: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    font-weight: 500;
-}
-
-/* BOTÓN DE ACCIÓN PRINCIPAL (CTA) */
-.btn-donate-submit {
+.dsf__button-next {
     width: 100%;
     background-color: var(--color-brand-red);
     color: #fff;
@@ -234,42 +190,26 @@ body {
     font-weight: 800;
     text-transform: uppercase;
     cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
     box-shadow: 6px 6px 0 rgba(0, 0, 0, 1);
     transition: all 0.2s;
-    position: relative;
 }
 
-.btn-donate-submit:hover {
+.dsf__button-next:hover {
     transform: translate(-2px, -2px);
     box-shadow: 8px 8px 0 rgba(0, 0, 0, 1);
 }
 
-.btn-donate-submit:active {
+.dsf__button-next:active {
     transform: translate(2px, 2px);
     box-shadow: 2px 2px 0 rgba(0, 0, 0, 1);
 }
 
-/* FOOTER SEGURIDAD */
-.dsf-security-footer {
+/* Mensaje de Seguridad */
+.dsf__security-message {
     margin-top: 24px;
     font-size: 12px;
     color: var(--color-black);
-    line-height: 1.5;
-    font-weight: 500;
     opacity: 0.8;
-}
-
-.footer-powered {
-    margin-top: 16px;
-    font-size: 13px;
-    color: var(--color-royal-blue);
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
+    text-align: center;
+    font-weight: 600;
 }
