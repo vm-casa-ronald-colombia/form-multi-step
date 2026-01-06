@@ -150,22 +150,46 @@ body {
 }
 
 /* Botón Siguiente (Main Action) */
+/* Botón Siguiente (Main Action) */
 .dsf__button-next {
     width: 100%;
     background-color: var(--color-red);
-    color: var(--color-white);
-    padding: 16px;
+    color: transparent !important;
+    /* HACK: Ocultar texto original */
+    text-shadow: none !important;
+    font-size: 0 !important;
+    padding: 18px;
     border: none;
     border-radius: var(--radius-btn);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 4px 12px rgba(218, 26, 0, 0.3);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dsf__button-next::after {
+    content: "CONTINUAR CON TU APOYO 💛";
+    /* Nuevo Texto */
+    color: var(--color-white);
     font-size: 16px;
     font-weight: 700;
     text-transform: uppercase;
-    cursor: pointer;
-    transition: filter 0.2s;
+    letter-spacing: 0.5px;
+    display: block;
 }
 
 .dsf__button-next:hover {
-    filter: brightness(0.9);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(218, 26, 0, 0.4);
+    filter: brightness(1.05);
+}
+
+.dsf__button-next:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 5px rgba(218, 26, 0, 0.2);
 }
 
 /* Mensajes de Seguridad (footer) */

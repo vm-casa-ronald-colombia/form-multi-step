@@ -182,21 +182,35 @@ body {
 .dsf__button-next {
     width: 100%;
     background-color: var(--color-brand-red);
-    color: #fff;
-    padding: 18px;
+    color: transparent !important;
+    /* HACK: Ocultar texto original */
+    font-size: 0 !important;
+    padding: 20px;
     border: 3px solid var(--color-black);
     border-radius: var(--radius-btn);
-    font-size: 18px;
-    font-weight: 800;
-    text-transform: uppercase;
     cursor: pointer;
     box-shadow: 6px 6px 0 rgba(0, 0, 0, 1);
     transition: all 0.2s;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dsf__button-next::after {
+    content: "CONTINUAR CON TU APOYO 💛";
+    /* Nuevo Texto */
+    color: #fff;
+    font-size: 18px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: block;
 }
 
 .dsf__button-next:hover {
-    transform: translate(-2px, -2px);
-    box-shadow: 8px 8px 0 rgba(0, 0, 0, 1);
+    transform: translate(-3px, -3px);
+    box-shadow: 9px 9px 0 rgba(0, 0, 0, 1);
 }
 
 .dsf__button-next:active {
