@@ -1,31 +1,23 @@
 :root {
     /* PALETA SITIO WEB RMHC */
     --color-red: #DA1A00;
-    /* Rojo Acción */
     --color-cream-bg: #FFFDE9;
-    /* Crema Fondo Página */
     --color-beige-form: #FFEED9;
-    /* Beige claro Fondo Formulario (aprox imagen) */
     --color-lavender: #D0C9FF;
-    /* Color de apoyo (header/footer) */
     --color-black: #000000;
     --color-dark-gray: #333333;
     --color-white: #FFFFFF;
     --shadow-soft: none;
-    /* Diseño plano según imágenes */
 
-    /* VARIABLES SISTEMA */
     --main-color: var(--color-red);
     --font-base: 'Inter', system-ui, -apple-system, sans-serif;
     --radius-btn: 4px;
-    /* Botones más cuadrados */
     --radius-input: 4px;
 }
 
 /* BASE */
 body {
     background-color: transparent;
-    /* Transparente para iframe */
     margin: 0;
     font-family: var(--font-base);
     color: var(--color-black);
@@ -37,10 +29,8 @@ body {
     max-width: 480px;
     margin: 0 auto;
     padding: 32px;
-    /* Fondo Beige como el recuadro "Donation Frequency" */
     background-color: var(--color-beige-form);
     border-radius: 0;
-    /* Bordes rectos o muy sutiles */
     position: relative;
     box-sizing: border-box;
 }
@@ -48,13 +38,24 @@ body {
 /* TITULOS (Simulados si el form los inyectara, o labels) */
 .dsf__group label {
     font-weight: 700;
-    /* Bolder como "Amount (USD)" */
     color: var(--color-black);
     margin-bottom: 8px;
     font-size: 15px;
 }
 
-/* FRECUENCY BUTTONS (One-Time / Monthly) - ESTILO EXACTO */
+/* === TITULO DINÁMICO PASO 1 (Monto) === */
+.dsf__recurrency::before {
+    content: "Selecciona tu aporte ❤️";
+    display: block;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--color-red);
+    text-align: center;
+    margin-bottom: 16px;
+    line-height: 1.2;
+}
+
+/* FRECUENCY BUTTONS */
 .dsf__recurrency {
     margin-bottom: 24px;
 }
@@ -62,29 +63,22 @@ body {
 .dsf__recurrency-option-list {
     display: flex;
     gap: 12px;
-    /* Separados */
     background: transparent;
     padding: 0;
     justify-content: flex-start;
-    /* Alineación IZQUIERDA */
 }
 
 .dsf__recurrency-option {
-    /* flex: 1; Eliminado para evitar estiramiento total, pero re-activado en mobile */
     width: 140px;
-    /* Ancho fijo similar a mockup */
     padding: 12px;
     text-align: center;
     font-weight: 600;
     font-size: 14px;
     cursor: pointer;
     background-color: var(--color-white);
-    /* Blanco según nueva imagen */
-    /* Crema claro inactivo */
     color: var(--color-black);
     border: none;
     border-radius: 4px;
-    /* Más redondeado */
     transition: all 0.2s;
     display: flex;
     justify-content: center;
@@ -115,7 +109,6 @@ body {
 .dsf__amount-option-list {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    /* O más columnas dependiendo del diseño */
     gap: 12px;
     margin-bottom: 24px;
 }
@@ -123,12 +116,10 @@ body {
 .dsf__amount-option {
     padding: 14px 0;
     background-color: var(--color-cream-bg);
-    /* Crema */
     color: var(--color-black);
     font-weight: 600;
     text-align: center;
     border-radius: 2px;
-    /* Cuadraditos */
     border: none;
     cursor: pointer;
     display: flex;
@@ -145,6 +136,19 @@ body {
     background-color: var(--color-red) !important;
     color: var(--color-white) !important;
     font-weight: 700;
+}
+
+/* === TITULO DINÁMICO PASO 2 (Datos) === */
+/* Se activa solo si encontramos un input de email, típico del paso 2 */
+.dsf__group:has(input[type="email"])::before {
+    content: "Completa tus datos 📝";
+    display: block;
+    width: 100%;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--color-red);
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 /* INPUTS - SIMPLE BLANCO */
@@ -175,14 +179,12 @@ body {
 .dsf__group select:focus {
     outline: none;
     border-color: var(--color-black);
-    /* Focus simple negro o rojo */
 }
 
 /* BUTTON NEXT - ROJO LARGO */
 .dsf__buttons-container {
     display: flex;
     flex-direction: column;
-    /* Stack en la versión web de la imagen es "Continue To Payment" full width */
     margin-top: 24px;
 }
 
@@ -194,12 +196,10 @@ body {
     font-size: 0 !important;
     border: none;
     border-radius: 4px;
-    /* Poco radio */
     cursor: pointer;
     position: relative;
     font-family: var(--font-base);
     text-transform: uppercase;
-    /* O Title Case, según gusto */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -207,7 +207,6 @@ body {
 
 .dsf__button-next::after {
     content: "CONTINUAR CON TU APOYO 💛";
-    /* O "Continue To Payment" traducido */
     color: #fff;
     font-size: 16px;
     font-weight: 700;
@@ -217,7 +216,7 @@ body {
     background-color: #b91500;
 }
 
-/* BUTTON PREV (Si existe) */
+/* BUTTON PREV */
 .dsf__button-prev {
     margin: 16px auto 0;
     background: transparent;
@@ -229,17 +228,14 @@ body {
     font-weight: 600;
 }
 
-/* CHECKBOXES - CUADRADOS SIMPLES */
+/* CHECKBOXES */
 .dsf__allow-upgrade-checkbox,
 .dsf__legal-notice-checkbox {
     width: 20px;
     height: 20px;
     border: 2px solid var(--color-black);
-    /* Borde negro marcado */
     border-radius: 0;
-    /* Cuadrados */
     accent-color: var(--color-black);
-    /* Check negro */
     cursor: pointer;
 }
 
@@ -250,31 +246,24 @@ body {
     font-weight: 700;
 }
 
-/* RESPONSIVE OPTIMIZADO */
+/* RESPONSIVE */
 @media (max-width: 480px) {
     .dsf {
         padding: 24px 16px;
-        /* Menos padding lateral para móviles */
         width: 100%;
     }
 
-    /* FRECUENCIA: Botones flexibles para no romper el layout */
     .dsf__recurrency-option-list {
         gap: 8px;
-        /* Reducir gap */
     }
 
     .dsf__recurrency-option {
         width: auto !important;
-        /* Sobrescribir el ancho fijo desktop */
         flex: 1;
-        /* Ocupar el espacio disponible 50% / 50% */
         padding: 12px 4px;
-        /* Menos padding horizontal interno */
         font-size: 13px;
     }
 
-    /* MONTOS: Mantener grid de 3 si es posible, o ajustar font */
     .dsf__amount-option-list {
         grid-template-columns: repeat(3, 1fr);
         gap: 8px;
@@ -285,20 +274,15 @@ body {
         padding: 12px 2px;
     }
 
-    /* Ajuste adicional para inputs */
     .dsf__group input,
     .dsf__group select {
         height: 48px;
-        /* Buena altura touch */
         font-size: 16px;
-        /* Evitar zoom en iOS */
     }
 }
 
-/* Móviles muy pequeños */
 @media (max-width: 340px) {
     .dsf__amount-option-list {
         grid-template-columns: repeat(2, 1fr);
-        /* Bajar a 2 columnas */
     }
 }
