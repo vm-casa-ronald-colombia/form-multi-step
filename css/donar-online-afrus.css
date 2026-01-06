@@ -226,7 +226,8 @@ h3,
 .dsf__button-next {
     width: 100%;
     padding: 16px;
-    background-color: var(--color-red);
+    background-color: var(--color-blue);
+    /* CAMBIO: Azul */
     color: transparent !important;
     font-size: 0 !important;
     border-radius: var(--radius-btn);
@@ -236,17 +237,19 @@ h3,
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 4px 12px rgba(218, 26, 0, 0.3);
+    box-shadow: 0 4px 12px rgba(79, 115, 172, 0.3);
+    /* Sombra azul */
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .dsf__button-next::after {
-    content: "CONTINUAR CON MI APORTE 💛";
+    content: "SIGUIENTE";
+    /* CAMBIO: Texto simple */
     color: #fff;
     font-size: 16px;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 1px;
     font-family: 'Audrey', sans-serif;
     /* Tipografía Audrey */
 }
