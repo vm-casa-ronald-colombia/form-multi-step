@@ -197,64 +197,78 @@
 .dsf__buttons-container {
     display: flex;
     flex-direction: column;
-    /* Stack vertical para Siguiente y Previo */
-    align-items: center;
-    margin-top: 32px;
+    /* Stack vertical */
+    margin-top: 24px;
     width: 100%;
+    gap: 16px;
+    /* Espacio entre Continuar y Volver */
 }
 
+/* Botón Siguiente (CTA Principal) */
 .dsf__button-next {
+    order: 1;
+    /* Primero */
     width: 100%;
-    background-color: var(--color-red);
+    padding: 16px;
+    background-color: var(--main-color);
     color: transparent !important;
-    /* HACK: Ocultar texto original */
-    text-shadow: none !important;
     font-size: 0 !important;
-    padding: 18px;
-    border: none;
     border-radius: var(--radius-btn);
+    border: none;
     cursor: pointer;
-    transition: all 0.2s;
-    box-shadow: 0 4px 6px rgba(218, 26, 0, 0.2);
-
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
+    box-shadow: 0 4px 10px rgba(218, 26, 0, 0.25);
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .dsf__button-next::after {
     content: "CONTINUAR CON TU APOYO 💛";
     color: #fff;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
 
 .dsf__button-next:hover {
-    filter: brightness(0.95);
     transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(218, 26, 0, 0.3);
+    box-shadow: 0 6px 14px rgba(218, 26, 0, 0.35);
+    filter: brightness(1.05);
+    /* Ligeramente más brillante en hover */
 }
 
+/* Botón Volver (Estilo Link Sutil) */
 .dsf__button-prev {
-    margin-top: 16px;
-    margin-left: 0;
-    margin-right: 0;
+    order: 2;
+    /* Segundo, debajo */
     background: transparent;
     border: none;
-    border-bottom: 1px solid #6b7280;
     color: #6b7280;
-    font-size: 12px;
-    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: underline;
+    text-transform: none;
+    /* No gritar */
     cursor: pointer;
-    padding: 2px 0;
+    padding: 8px;
+    margin: 0 auto;
+    /* Centrado */
+    width: auto;
+    opacity: 0.8;
+    transition: opacity 0.2s;
 }
 
 .dsf__button-prev:hover {
-    color: var(--color-blue);
-    border-color: var(--color-blue);
+    opacity: 1;
+    color: var(--color-dark-gray);
+    border: none;
+}
+
+.dsf__button-prev:focus {
+    outline: none;
 }
 
 /* DSF GROUP (INPUTS) */
@@ -273,23 +287,30 @@
 
 .dsf__group input,
 .dsf__group select {
-    padding: 12px;
-    background-color: #f3f4f6;
-    /* Fondo gris suave inputs */
+    padding: 10px 12px;
+    /* Reducido verticalmente */
+    background-color: #fff;
+    /* Blanco para más limpieza */
     color: var(--color-dark-gray);
-    border-radius: var(--radius-btn);
-    border: 1px solid transparent;
-    /* Sin borde inicial */
-    height: auto;
-    /* Dejar que padding defina altura */
+    border-radius: 6px;
+    /* Borde más sutil */
+    border: 1px solid #d1d5db;
+    /* Borde visible suave */
+    height: 44px;
+    /* Altura controlada, no auto */
     font-size: 15px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 .dsf__group input:focus,
 .dsf__group select:focus {
     outline: none;
-    background-color: #fff;
     border-color: var(--color-blue);
+    box-shadow: 0 0 0 3px rgba(72, 114, 174, 0.15);
+    /* Ring suave */
+    background-color: #fff;
 }
 
 .dsf__group--error label {
