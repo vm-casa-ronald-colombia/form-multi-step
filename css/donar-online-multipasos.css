@@ -194,23 +194,30 @@
 }
 
 /* BUTTONS */
+/* BUTTONS */
 .dsf__buttons-container {
     display: flex;
-    flex-direction: column;
-    /* Stack vertical */
-    margin-top: 24px;
+    flex-direction: row;
+    /* Volver a fila horizontal */
+    justify-content: space-between;
+    /* Separados a los extremos */
+    align-items: center;
+    margin-top: 32px;
     width: 100%;
-    gap: 16px;
-    /* Espacio entre Continuar y Volver */
+    gap: 20px;
 }
 
 /* Botón Siguiente (CTA Principal) */
 .dsf__button-next {
-    order: 1;
-    /* Primero */
-    width: 100%;
-    padding: 16px;
-    background-color: var(--main-color);
+    order: 2;
+    /* A la derecha */
+    width: auto;
+    /* Ancho automático según contenido */
+    min-width: 180px;
+    /* Ancho mínimo para buena presencia */
+    padding: 14px 24px;
+    background-color: var(--color-blue);
+    /* Ajuste a AZUL según imagen del usuario si aplica, o mantener --main-color */
     color: transparent !important;
     font-size: 0 !important;
     border-radius: var(--radius-btn);
@@ -220,51 +227,58 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 4px 10px rgba(218, 26, 0, 0.25);
+    box-shadow: 0 4px 10px rgba(72, 114, 174, 0.2);
+    /* Sombra azulada */
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .dsf__button-next::after {
     content: "CONTINUAR CON TU APOYO 💛";
     color: #fff;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    white-space: nowrap;
 }
 
 .dsf__button-next:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 14px rgba(218, 26, 0, 0.35);
+    box-shadow: 0 6px 14px rgba(72, 114, 174, 0.3);
     filter: brightness(1.05);
-    /* Ligeramente más brillante en hover */
 }
 
 /* Botón Volver (Estilo Link Sutil) */
 .dsf__button-prev {
-    order: 2;
-    /* Segundo, debajo */
+    order: 1;
+    /* A la izquierda */
     background: transparent;
     border: none;
+    border-bottom: 1px solid #6b7280;
+    /* Estilo link subrayado sutil */
     color: #6b7280;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 500;
-    text-decoration: underline;
-    text-transform: none;
-    /* No gritar */
+    text-decoration: none;
     cursor: pointer;
-    padding: 8px;
-    margin: 0 auto;
-    /* Centrado */
-    width: auto;
+    padding: 0 0 2px 0;
+    margin: 0;
     opacity: 0.8;
-    transition: opacity 0.2s;
+    transition: all 0.2s;
 }
 
 .dsf__button-prev:hover {
     opacity: 1;
-    color: var(--color-dark-gray);
-    border: none;
+    color: var(--color-blue);
+    border-color: var(--color-blue);
+}
+
+.dsf__button-prev:focus {
+    outline: none;
+}
+
+color: var(--color-dark-gray);
+border: none;
 }
 
 .dsf__button-prev:focus {
