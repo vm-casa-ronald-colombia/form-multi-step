@@ -25,15 +25,12 @@
 }
 
 body {
-    background-color: var(--color-sky-blue);
-    background-image: linear-gradient(135deg, var(--color-sky-blue) 0%, var(--color-lavender) 100%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+    background-color: transparent;
+    /* Transparente para que se funda con el sitio web */
     margin: 0;
     font-family: var(--font-base);
     color: var(--color-black);
+    /* Eliminado: layout de página completa que rompe el iframe */
 }
 
 /* --- CLASES OFICIALES DONAR ONLINE (.dsf) --- */

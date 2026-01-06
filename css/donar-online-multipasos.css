@@ -17,14 +17,11 @@
 }
 
 body {
-    background-color: #d1d5db;
-    /* Fondo grisáceo */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+    background-color: transparent;
+    /* Transparente para integración en iframe */
     margin: 0;
     font-family: var(--font-base);
+    /* Eliminado: display flex y min-height, causan problemas en iframes */
 }
 
 /* --- CLASES OFICIALES DONAR ONLINE (.dsf) --- */
