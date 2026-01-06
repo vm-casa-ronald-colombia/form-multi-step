@@ -90,11 +90,20 @@ body {
     display: none;
 }
 
+.dsf__recurrency-option-label {
+    margin: 0;
+    padding: 0;
+}
+
 /* ACTIVO: ROJO SOLIDO */
 .dsf__recurrency-option--selected {
     background-color: var(--color-red) !important;
     color: var(--color-white) !important;
     font-weight: 700;
+}
+
+.dsf__recurrency-option--selected .dsf__recurrency-option-label {
+    color: var(--color-white) !important;
 }
 
 /* AMOUNTS - CUADRADOS CREMA */
