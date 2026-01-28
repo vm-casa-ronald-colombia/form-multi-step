@@ -1,22 +1,26 @@
 :root {
-    /* PALETA 'CLEAN CORPORATE' (Imagen 2) */
-    --color-blue: #4f73ac;
-    /* Azul Agradable (Botones Activos) */
+    /* PALETA 'CLEAN CORPORATE' + STRIPE VIBE */
+    --color-blue: #635bff;
+    /* Stripe Blurple-ish */
+    --color-blue-hover: #5851df;
     --color-red: #da1a00;
-    /* Rojo Acción (CTA) */
+    /* Manteniendo el rojo de la marca acción */
     --color-white: #ffffff;
-    /* Fondo Card */
-    --color-gray-border: #d1d5db;
-    --color-gray-bg: #f9fafb;
-    --color-text-dark: #1f2937;
-    --color-text-muted: #6b7280;
+    --color-bg-input: #ffffff;
+    --color-border-input: #e6e6e6;
+    --color-text-dark: #3c4257;
+    /* Stripe text color */
+    --color-text-muted: #697386;
+    --color-focus-ring: rgba(99, 91, 255, 0.2);
 
-    --font-base: 'Inter', system-ui, -apple-system, sans-serif;
-    --radius-card: 24px;
-    --radius-btn: 8px;
-    --radius-input: 6px;
-    --shadow-card: 0 10px 25px rgba(0, 0, 0, 0.05);
-    /* Sombra suave */
+    --font-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --radius-card: 20px;
+    --radius-btn: 6px;
+    /* slightly sharper like Stripe */
+    --radius-input: 5px;
+    --shadow-card: 0 15px 35px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07);
+    --shadow-input: 0 1px 3px 0 rgba(50, 50, 93, 0.06);
+    --shadow-input-focus: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 /* BASE */
@@ -25,14 +29,17 @@ body {
     margin: 0;
     font-family: var(--font-base);
     color: var(--color-text-dark);
+    -webkit-font-smoothing: antialiased;
+    font-size: 16px;
 }
 
-/* FORM CONTAINER - CARD BLANCA LIMPIA */
+/* FORM CONTAINER */
 .dsf {
     width: 100%;
-    max-width: 480px;
+    max-width: 440px;
+    /* Focus width */
     margin: 0 auto;
-    padding: 32px;
+    padding: 40px;
     background-color: var(--color-white);
     border-radius: var(--radius-card);
     box-shadow: var(--shadow-card);
@@ -40,43 +47,104 @@ body {
     box-sizing: border-box;
 }
 
-/* TITULOS / HEADERS (Si hay) */
+/* TITLES */
 h1,
 h2,
 h3,
 .dsf__title {
-    color: var(--color-blue);
+    color: var(--color-text-dark);
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    font-size: 22px;
 }
 
-/* FRECUENCY BUTTONS (MENSUAL / UNA VEZ) */
+/* 1. OCULTAR LABELS (Solicitud explícita) */
+.dsf__group label {
+    display: none !important;
+}
+
+/* 2. ESPACIO REDUCIDO ENTRE INPUTS */
+.dsf__group {
+    margin-bottom: 12px;
+    /* Más compacto */
+    position: relative;
+}
+
+/* 3. INPUTS ESTILO STRIPE (Moderno/Premium) */
+.dsf__group input,
+.dsf__group select {
+    display: block;
+    width: 100%;
+    height: 44px;
+    /* Altura ideal */
+    padding: 10px 14px;
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--color-text-dark);
+    background-color: var(--color-bg-input);
+    border: 1px solid var(--color-border-input);
+    border-radius: var(--radius-input);
+    box-shadow: var(--shadow-input);
+    transition: all 0.15s ease-in-out;
+    box-sizing: border-box;
+    font-weight: 500;
+}
+
+.dsf__group input::placeholder {
+    color: #a3acb9;
+    font-weight: 400;
+}
+
+.dsf__group input:focus,
+.dsf__group select:focus {
+    outline: none;
+    border-color: var(--color-blue);
+    box-shadow: 0 0 0 3px var(--color-focus-ring), var(--shadow-input-focus);
+    transform: translateY(-1px);
+    z-index: 2;
+}
+
+/* 4. MENSAJES DE ERROR (Pequeños y cerca) */
+.dsf__error-message,
+.error-msg,
+.validation-error,
+.error {
+    display: block;
+    font-size: 12px;
+    font-weight: 500;
+    color: #cd3d64;
+    /* Rojo Stripe */
+    margin-top: 4px;
+    margin-bottom: 0;
+    line-height: 1.3;
+    padding-left: 1px;
+}
+
+/* RECURRENCY BUTTONS */
 .dsf__recurrency {
-    margin-bottom: 24px;
+    margin-bottom: 20px;
 }
 
 .dsf__recurrency-option-list {
     display: flex;
-    gap: 16px;
-    /* Separación marcada */
-    background: transparent;
-    padding: 0;
-    justify-content: stretch;
+    gap: 10px;
 }
 
 .dsf__recurrency-option {
     flex: 1;
-    /* Ocupan 50% cada uno estirados */
-    padding: 14px;
+    padding: 10px;
     text-align: center;
     font-weight: 600;
-    font-size: 14px;
+    font-size: 13px;
     text-transform: uppercase;
     cursor: pointer;
     background-color: var(--color-white);
-    color: var(--color-text-dark);
-    border: 1px solid var(--color-gray-border);
+    color: var(--color-text-muted);
+    border: 1px solid var(--color-border-input);
     border-radius: var(--radius-btn);
+    box-shadow: var(--shadow-input);
     transition: all 0.2s ease;
     display: flex;
     justify-content: center;
@@ -89,57 +157,48 @@ h3,
 
 .dsf__recurrency-option-label {
     margin: 0;
-    padding: 0;
 }
 
-/* ACTIVO (Azul Sólido) */
+.dsf__recurrency-option:hover {
+    border-color: var(--color-blue);
+    color: var(--color-blue);
+}
+
 .dsf__recurrency-option--selected {
     background-color: var(--color-blue) !important;
     color: var(--color-white) !important;
     border-color: var(--color-blue) !important;
-    box-shadow: 0 4px 6px rgba(79, 115, 172, 0.2);
+    box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+    transform: translateY(-1px);
 }
 
 .dsf__recurrency-option--selected .dsf__recurrency-option-label {
     color: var(--color-white) !important;
 }
 
-/* AMOUNTS (MONTOS) */
+/* AMOUNT OPTIONS */
 .dsf__amount-option-list {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
+    gap: 10px;
     margin-bottom: 24px;
 }
 
 .dsf__amount-option {
-    padding: 14px 6px;
+    padding: 12px 6px;
     background-color: var(--color-white);
-    border: 1px solid var(--color-gray-border);
+    border: 1px solid var(--color-border-input);
     border-radius: var(--radius-btn);
     color: var(--color-text-dark);
     font-size: 15px;
-    font-weight: 500;
+    font-weight: 600;
     text-align: center;
     cursor: pointer;
+    box-shadow: var(--shadow-input);
     transition: all 0.2s;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.dsf__amount-option:hover {
-    border-color: var(--color-blue);
-    color: var(--color-blue);
-}
-
-/* ACTIVO (Azul Sólido) */
-.dsf__amount-option--selected {
-    background-color: var(--color-blue) !important;
-    color: var(--color-white) !important;
-    border-color: var(--color-blue) !important;
-    font-weight: 700;
-    box-shadow: 0 4px 6px rgba(79, 115, 172, 0.2);
 }
 
 .dsf__amount-option-input {
@@ -150,120 +209,70 @@ h3,
     font: inherit;
     color: inherit;
     outline: none;
-}
-
-/* INPUTS DE DONANTE */
-.dsf__group {
-    margin-bottom: 16px;
-}
-
-.dsf__group label {
-    color: var(--color-text-dark);
-    font-size: 14px;
-    font-weight: 500;
-    margin-bottom: 6px;
-    display: block;
-}
-
-.dsf__group input,
-.dsf__group select {
-    padding: 12px 14px;
-    background-color: var(--color-gray-bg);
-    /* Gris muy suave */
-    border: 1px solid var(--color-gray-border);
-    /* Sin borde o borde sutil */
-    border-radius: var(--radius-input);
-    font-size: 15px;
-    color: var(--color-text-dark);
-    width: 100%;
-    box-sizing: border-box;
-    height: 48px;
-    transition: all 0.2s;
-}
-
-.dsf__group input:focus,
-.dsf__group select:focus {
-    outline: none;
-    background-color: var(--color-white);
-    border-color: var(--color-blue);
-    box-shadow: 0 0 0 3px rgba(79, 115, 172, 0.1);
-}
-
-/* OTRO MONTO + TEXTO AYUDA (Simulación) */
-/* Si existiera un container de mensaje de impacto */
-.impact-message {
-    background-color: #f3f4f6;
-    padding: 12px;
-    border-radius: 8px;
-    text-align: center;
-    font-size: 13px;
-    color: var(--color-text-dark);
-    margin-bottom: 20px;
-}
-
-/* CHECKBOXES */
-.dsf__allow-upgrade-checkbox,
-.dsf__legal-notice-checkbox {
-    width: 18px;
-    height: 18px;
-    border-radius: 4px;
-    border: 1px solid var(--color-gray-border);
-    accent-color: var(--color-blue);
-    /* Check azul */
     cursor: pointer;
-    margin-right: 8px;
 }
 
-.dsf__allow-upgrade-label,
-.dsf__legal-notice-label {
-    font-size: 13px;
-    color: var(--color-text-muted);
+.dsf__amount-option:hover {
+    border-color: var(--color-blue);
+    color: var(--color-blue);
+    transform: translateY(-1px);
+}
+
+.dsf__amount-option--selected {
+    background-color: var(--color-blue) !important;
+    color: var(--color-white) !important;
+    border-color: var(--color-blue) !important;
+    box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11);
 }
 
 /* BUTTONS CONTAINER */
 .dsf__buttons-container {
+    margin-top: 24px;
     display: flex;
     flex-direction: column;
-    /* Stack vertical botón grande */
     align-items: center;
-    margin-top: 32px;
-    width: 100%;
 }
 
-/* BOTÓN CTA PRINCIPAL (ROJO, GRANDE, ROUNDED) */
+/* CTA BUTTON */
 .dsf__button-next {
     width: 100%;
-    padding: 16px;
-    background-color: var(--color-red);
+    padding: 14px 20px;
+    background: #da1a00;
+    /* Gradiente sutil para profundidad */
+    background: linear-gradient(180deg, #e31f05 0%, #c41900 100%);
     color: transparent !important;
     font-size: 0 !important;
     border-radius: var(--radius-btn);
-    border: none;
+    border: 1px solid transparent;
     cursor: pointer;
     position: relative;
+    box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+    transition: all 0.2s;
+    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 4px 12px rgba(218, 26, 0, 0.3);
-    transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .dsf__button-next::after {
-    content: "CONTINUAR CON MI APORTE 💛";
+    content: "CONTINUAR 💛";
     color: #fff;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
 
 .dsf__button-next:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(218, 26, 0, 0.4);
-    filter: brightness(1.05);
+    transform: translateY(-1px);
+    box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
 }
 
-/* BOTÓN VOLVER (Oculto o muy sutil abajo) */
+.dsf__button-next:active {
+    transform: translateY(1px);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
 .dsf__button-prev {
     margin-top: 16px;
     background: transparent;
@@ -272,41 +281,92 @@ h3,
     font-size: 13px;
     text-decoration: underline;
     cursor: pointer;
+    transition: color 0.2s;
 }
 
-/* MENSAJE SEGURIDAD */
-.dsf__security-message {
+.dsf__button-prev:hover {
+    color: var(--color-text-dark);
+}
+
+/* LEGAL & CHECKBOXES */
+.dsf__group-checkbox {
+    display: flex;
+    align-items: flex-start;
+    margin-top: 12px;
+}
+
+.dsf__allow-upgrade-checkbox,
+.dsf__legal-notice-checkbox {
+    min-width: 16px;
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+    margin-top: 2px;
+    accent-color: var(--color-blue);
+    cursor: pointer;
+}
+
+.dsf__allow-upgrade-label,
+.dsf__legal-notice-label {
+    font-size: 12px;
+    color: var(--color-text-muted);
+    line-height: 1.4;
+}
+
+.dsf__legal-notice-label a {
+    color: var(--color-text-dark);
+    font-weight: 500;
+}
+
+/* SECURITY FOOTER */
+.dsf__security-footer {
+    text-align: center;
+    margin-top: 24px;
+    border-top: 1px solid #f3f4f6;
+    padding-top: 16px;
+}
+
+.dsf__security-footer p {
+    font-size: 11px;
+    color: #9ca3af;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 24px;
-    color: var(--color-text-muted);
-    font-size: 12px;
+    gap: 4px;
+    margin: 0 0 8px 0;
 }
 
-.dsf__security-message svg {
-    width: 14px;
-    height: 14px;
-    fill: #6b7280;
-}
-
-.dsf__security-message p {
-    margin: 0 0 0 6px;
+.footer-powered {
+    font-size: 10px;
+    color: #d1d5db;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 /* RESPONSIVE */
-@media (max-width: 400px) {
+@media (max-width: 480px) {
     .dsf {
         padding: 24px 20px;
+        box-shadow: none;
+        border-radius: 0;
+        background-color: var(--color-white);
+        /* Ensure bg matches */
     }
 
     .dsf__amount-option-list {
-        grid-template-columns: repeat(3, 1fr);
         gap: 8px;
     }
 
     .dsf__amount-option {
         font-size: 13px;
         padding: 10px 4px;
+    }
+
+    /* En móvil a veces queremos los inputs un pelín más grandes para tocar */
+    .dsf__group input,
+    .dsf__group select {
+        font-size: 16px;
+        /* Evita zoom en iOS */
+        height: 46px;
     }
 }
