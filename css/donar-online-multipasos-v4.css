@@ -63,35 +63,33 @@ body {
 /* === ESTRUCTURA Y ORDEN DEL PASO 1 === */
 
 /* 1. Contenedor Flex para reordenar */
-/* NOTA: Usamos un selector general del paso 1 si existe, o el dsf directo asumiendo estructura plana */
 .dsf {
     display: flex;
     flex-direction: column;
 }
 
-/* 2. Título Principal - Mensaje de Impacto */
+/* 2. Título Principal - Mensaje de Impacto (Rojo) */
 .dsf::before {
     content: "Hoy puedes hacer que una familia esté cerca a su hijo mientras recibe tratamiento médico ❤️";
-    order: 1;
-    /* PRIMERO */
+    order: -10;
+    /* SUPER PRIORIDAD: ARRIBA DE TODO */
     display: block;
     width: 100%;
-    font-size: 18px;
-    /* Ajustado para texto más largo */
-    line-height: 1.35;
-    font-weight: 700;
+    font-size: 19px;
+    line-height: 1.3;
+    font-weight: 800;
     color: var(--color-red);
-    /* Rojo marca como en screenshot */
     text-align: center;
-    margin-bottom: 24px;
-    letter-spacing: -0.2px;
+    margin-bottom: 20px;
+    letter-spacing: -0.3px;
+    padding: 0 10px;
 }
 
 /* 3. Frecuencia - SEGUNDO LUGAR */
 .dsf__recurrency {
-    order: 2;
-    /* Arriba de los montos */
-    margin-bottom: 24px;
+    order: -5;
+    /* PRIORIDAD ALTA: Justo debajo del título */
+    margin-bottom: 20px;
 }
 
 /* Subtítulo: Elige la frecuencia */
@@ -104,10 +102,11 @@ body {
     margin-bottom: 12px;
 }
 
-/* 4. Montos - TERCER LUGAR */
+/* 4. Montos - TERCER LUGAR (El resto tiene order:0 así que esto flotará naturalmente o lo forzamos) */
 .dsf__amount-option-list {
-    order: 3;
-    /* Debajo de frecuencia */
+    order: -1;
+    /* Ligeramente prioritaria para asegurarla antes de inputs raros */
+    margin-bottom: 24px;
 }
 
 /* Subtítulo: Elige el monto */
@@ -121,29 +120,27 @@ body {
     color: var(--color-black);
     margin-bottom: 12px;
     text-align: left;
-    /* Alineado izq como el de frecuencia */
 }
 
-/* 5. Asegurar que otros elementos sigan el flujo natural (order alto auto) o definirlos */
+/* 5. Asegurar orden el resto */
 .dsf__allow-upgrade {
-    order: 4;
+    order: 2;
+    margin-bottom: 15px;
 }
 
 .dsf__buttons-container {
-    order: 5;
+    order: 10;
 }
 
 .dsf__security-message {
-    order: 6;
+    order: 11;
 }
 
 .dsf__recurrency-option-list {
     display: flex;
     gap: 12px;
-    /* Background contenedor tipo toggle - Eliminado para estilo botón separado */
     background: transparent;
     padding: 0;
-    gap: 12px;
 }
 
 .dsf__recurrency-option {
