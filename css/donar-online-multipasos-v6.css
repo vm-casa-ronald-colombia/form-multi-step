@@ -130,51 +130,42 @@ body {
     margin-bottom: 10px;
 }
 
-/* 2. GAP SUPER COMPACTO (Estilo Imagen 3) */
+/* 2. GAP SUPER COMPACTO */
 .dsf__group {
-    margin-bottom: 6px;
-    /* Gap mínimo entre filas */
+    margin-bottom: 8px;
+    /* Gap pequeño pero seguro */
     padding: 0;
     background: transparent;
     position: relative;
-    /* Necesario para el label absoluto */
 }
 
-/* LABEL COMO PLACEHOLDER (Adentro y desaparece) */
+/* LABEL CLÁSICO (ARRIBA DEL INPUT) */
 .dsf__group label {
     display: block !important;
-    position: absolute;
-    top: 50%;
-    left: 14px;
-    transform: translateY(-50%);
+    position: static;
+    transform: none;
 
-    font-size: 15px;
-    font-weight: 400;
-    /* Peso normal de placeholder */
-    color: #888;
-    /* Gris placeholder */
+    font-size: 13px;
+    font-weight: 600;
+    color: #555;
+    /* Gris oscuro legible */
 
-    margin: 0;
+    margin-bottom: 4px;
+    /* Pegadito al input */
     padding: 0;
     text-transform: none;
-    pointer-events: none;
-    /* Click pasa al input */
-    z-index: 5;
-    transition: all 0.1s ease;
+    pointer-events: auto;
     background: transparent !important;
+    opacity: 1 !important;
+    visibility: visible !important;
     width: auto;
-    max-width: 90%;
-    overflow: hidden;
-    white-space: nowrap;
 }
 
-/* TRUCO: Desaparecer label al escribir (Focus o Valido) */
+/* Limpiar trucos viejos */
 .dsf__group:focus-within label,
-.dsf__group input:valid~label,
-.dsf__group select:valid~label,
-.dsf__group input:not(:placeholder-shown)~label {
-    opacity: 0;
-    visibility: hidden;
+.dsf__group input:valid~label {
+    opacity: 1;
+    visibility: visible;
 }
 
 /* INPUTS "SOLO CAJA" */
