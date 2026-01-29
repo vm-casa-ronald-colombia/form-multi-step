@@ -276,7 +276,8 @@ body {
 
 /* 2. & 3. INPUTS CON LABELS CLAROS (Estilo Seguro) */
 .dsf__group {
-    margin-bottom: 15px;
+    margin-bottom: 8px;
+    /* Reducido de 15px para compactar */
     background: transparent;
 }
 
@@ -291,7 +292,8 @@ body {
     color: #444;
     /* Gris oscuro legible */
 
-    margin-bottom: 6px;
+    margin-bottom: 2px;
+    /* Reducido de 6px */
     padding: 0;
     text-transform: none;
     pointer-events: auto;
