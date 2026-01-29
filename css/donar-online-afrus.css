@@ -118,38 +118,60 @@ button.active,
     color: white !important;
 }
 
-/* Layout de opciones */
-.dsf__recurrency-option-list {
-    display: flex;
-    /* Flex permite más fácil 50% exacto que grid con gap variable */
-    justify-content: space-between;
-    gap: 12px;
-    margin-bottom: 20px;
-    background: transparent;
-    padding: 0;
-    width: 100%;
+/* Layout de opciones - FRECUENCIA (Forzado Agresivo) */
+div[class*="recurrency"],
+.dsf__recurrency-option-list,
+.donation-flow-step-recurring-period {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    gap: 12px !important;
+    width: 100% !important;
+    margin-bottom: 20px !important;
 }
 
-.dsf__recurrency-option {
-    flex: 1;
-    /* Ocupa el 50% - gap */
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* Opciones individuales (Mensual / Una vez) */
+div[class*="recurrency-option"],
+.dsf__recurrency-option,
+.donation-flow-step-recurring-period-option {
+    flex: 1 1 0px !important;
+    /* Force equal width */
+    width: 50% !important;
+    max-width: 50% !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 12px 0 !important;
+    margin: 0 !important;
     border-radius: 12px !important;
-    height: 48px;
-    background-color: var(--color-white);
     border: 1px solid #d1d5db !important;
+    background-color: var(--color-white) !important;
     color: #4F73AC !important;
-    /* Azul por defecto en texto */
-    font-weight: 700;
+    font-weight: 700 !important;
+    cursor: pointer !important;
+    text-align: center !important;
+    text-transform: uppercase !important;
+    font-size: 14px !important;
 }
 
-.dsf__recurrency-option--selected {
+/* Estado Seleccionado */
+div[class*="selected"],
+.dsf__recurrency-option--selected,
+.active {
     background-color: #2B6CB0 !important;
     color: white !important;
     border-color: #2B6CB0 !important;
+    box-shadow: 0 4px 6px rgba(43, 108, 176, 0.2) !important;
+}
+
+/* Selector para labels internos si existen */
+div[class*="recurrency-option"] label,
+div[class*="recurrency-option"] span {
+    color: inherit !important;
+    font-weight: inherit !important;
+    cursor: pointer !important;
+    display: block !important;
+    width: 100% !important;
 }
 
 /* Montos Grid */
