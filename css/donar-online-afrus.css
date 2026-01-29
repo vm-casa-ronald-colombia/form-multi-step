@@ -118,7 +118,7 @@ button.active,
     color: white !important;
 }
 
-/* Layout de opciones */
+/* Layout de opciones - FRECUENCIA (Selectores Oficiales) */
 .dsf__recurrency-option-list {
     display: flex;
     justify-content: space-between;
@@ -131,42 +131,43 @@ button.active,
 
 .dsf__recurrency-option {
     flex: 1;
-    text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 12px !important;
     height: 48px;
     background-color: var(--color-white);
     border: 1px solid #d1d5db !important;
-    color: #4F73AC !important;
-    font-weight: 700;
+    border-radius: 12px !important;
+    cursor: pointer;
+    margin: 0 !important;
+    /* Reset de márgenes oficiales */
+    padding: 0 !important;
 }
 
+/* Ocultar el círculo del radio button OFICIAL */
+.dsf__recurrency-option-radio {
+    display: none !important;
+}
+
+/* Estilo del texto (Label) */
+.dsf__recurrency-option-label {
+    color: #4F73AC;
+    font-weight: 700;
+    font-size: 14px;
+    text-transform: uppercase;
+    flex: none !important;
+    /* Evitar que se encoja */
+}
+
+/* Estado SELECCIONADO (Clase Oficial) */
 .dsf__recurrency-option--selected {
     background-color: #2B6CB0 !important;
-    color: white !important;
     border-color: #2B6CB0 !important;
     box-shadow: 0 4px 6px rgba(43, 108, 176, 0.2);
 }
 
-/* 🔥 PARCHE DE EMERGENCIA: Ocultar los inputs nativos que se superponen 🔥 */
-.dsf__recurrency-option input,
-div[class*="recurrency"] input[type="radio"] {
-    opacity: 0 !important;
-    position: absolute !important;
-    width: 1px !important;
-    height: 1px !important;
-    overflow: hidden !important;
-    pointer-events: none !important;
-    margin: 0 !important;
-}
-
-/* Asegurar que el label/texto quede visible por encima */
-.dsf__recurrency-option label,
-.dsf__recurrency-option span {
-    z-index: 5;
-    position: relative;
+.dsf__recurrency-option--selected .dsf__recurrency-option-label {
+    color: white !important;
 }
 
 /* Montos Grid */
