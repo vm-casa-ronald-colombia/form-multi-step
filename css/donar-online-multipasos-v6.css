@@ -140,28 +140,34 @@ body {
 .dsf__recurrency-option-list {
     display: flex;
     gap: 12px;
-    background: #f7f7f7;
-    /* Background contenedor tipo toggle */
-    padding: 4px;
-    border-radius: 8px;
-    justify-content: stretch;
+    /* Background contenedor tipo toggle - Eliminado para estilo botón separado */
+    background: transparent;
+    padding: 0;
+    gap: 12px;
 }
 
 .dsf__recurrency-option {
     flex: 1;
-    padding: 10px;
+    padding: 12px 20px;
     text-align: center;
-    font-weight: 600;
-    font-size: 13px;
+    font-weight: 700;
+    /* Más negrita */
+    font-size: 14px;
     cursor: pointer;
-    background-color: transparent;
-    color: var(--color-dark-gray);
+
+    /* ESTADO INACTIVO (COMO EN FOTO 2) */
+    background-color: #FFFFF0;
+    /* Crema muy claro casi blanco */
+    color: var(--color-black);
     border: none;
+    /* Sin borde */
     border-radius: 6px;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.2s;
     display: flex;
     justify-content: center;
     align-items: center;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    /* Sutil sombra */
 }
 
 .dsf__recurrency-option-radio {
@@ -173,12 +179,16 @@ body {
     padding: 0;
 }
 
-/* ACTIVO */
+/* ACTIVO - ROJO SOLIDO (COMO EN FOTO 2) */
 .dsf__recurrency-option--selected {
-    background-color: var(--color-white) !important;
-    color: var(--color-red) !important;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
-    font-weight: 700;
+    background-color: var(--color-red) !important;
+    color: white !important;
+    /* Texto blanco sobre rojo */
+    box-shadow: 0 4px 6px rgba(213, 43, 30, 0.3);
+}
+
+.dsf__recurrency-option--selected .dsf__recurrency-option-label {
+    color: white !important;
 }
 
 /* AMOUNTS - TARJETAS MODERNAS */
