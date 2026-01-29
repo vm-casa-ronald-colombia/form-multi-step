@@ -1,0 +1,412 @@
+:root {
+    /* PALETA "NUEVOS COLORES" - CREMA CÁLIDO & ROJO (v4) */
+    --color-red: #D52B1E;
+    /* Rojo McDonald's Standard */
+    --color-red-hover: #b91500;
+
+    /* El "Crema/Naranja" del fondo */
+    --color-cream-bg: #FFF9E6;
+    /* Un crema amarillento cálido */
+    --color-beige-form: #FFF9E6;
+    /* Mismo tono para fundir la tarjeta */
+
+    --color-white: #FFFFFF;
+    --color-black: #000000;
+    --color-dark-gray: #2C2C2C;
+    --color-border: #E6DBB9;
+    /* Borde crema oscuro */
+    --color-focus-ring: rgba(213, 43, 30, 0.2);
+
+    --main-color: var(--color-red);
+    --font-base: 'Inter', system-ui, -apple-system, sans-serif;
+    --radius-btn: 8px;
+    --radius-card: 16px;
+    --radius-input: 4px;
+
+    /* Sombras más duras/clásicas como en la imagen */
+    --shadow-card: none;
+    /* Look plano como la imagen */
+    --shadow-input: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-input-focus: 0 0 0 2px var(--color-focus-ring);
+}
+
+/* BASE */
+body {
+    background-color: var(--color-cream-bg);
+    margin: 0;
+    font-family: var(--font-base);
+    color: var(--color-black);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* FORM CONTAINER - PREMIUM RMHC */
+.dsf {
+    width: 100%;
+    max-width: 460px;
+    margin: 0 auto;
+    padding: 40px;
+    background-color: var(--color-beige-form);
+    /* Todo crema */
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+    position: relative;
+    box-sizing: border-box;
+    border: none;
+}
+
+/* 1. OCULTAR LABELS */
+.dsf__group label {
+    display: none !important;
+}
+
+/* === TITULO DINÁMICO PASO 1 (Monto) === */
+/* === ESTRUCTURA Y ORDEN DEL PASO 1 === */
+
+/* 1. Contenedor Flex para reordenar */
+/* NOTA: Usamos un selector general del paso 1 si existe, o el dsf directo asumiendo estructura plana */
+.dsf {
+    display: flex;
+    flex-direction: column;
+}
+
+/* 2. Título Principal "Hazte Amigo del Alma" - Arriba de todo */
+.dsf::before {
+    content: "Hazte Amigo del Alma ❤️";
+    order: 1;
+    /* PRIMERO */
+    display: block;
+    width: 100%;
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--color-black);
+    text-align: center;
+    margin-bottom: 24px;
+    letter-spacing: -0.5px;
+}
+
+/* 3. Frecuencia - SEGUNDO LUGAR */
+.dsf__recurrency {
+    order: 2;
+    /* Arriba de los montos */
+    margin-bottom: 24px;
+}
+
+/* Subtítulo: Elige la frecuencia */
+.dsf__recurrency::before {
+    content: "Elige la frecuencia";
+    display: block;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--color-black);
+    margin-bottom: 12px;
+}
+
+/* 4. Montos - TERCER LUGAR */
+.dsf__amount-option-list {
+    order: 3;
+    /* Debajo de frecuencia */
+}
+
+/* Subtítulo: Elige el monto */
+.dsf__amount-option-list::before {
+    content: "Elige el monto que deseas donar";
+    display: block;
+    width: 100%;
+    grid-column: 1 / -1;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--color-black);
+    margin-bottom: 12px;
+    text-align: left;
+    /* Alineado izq como el de frecuencia */
+}
+
+/* 5. Asegurar que otros elementos sigan el flujo natural (order alto auto) o definirlos */
+.dsf__allow-upgrade {
+    order: 4;
+}
+
+.dsf__buttons-container {
+    order: 5;
+}
+
+.dsf__security-message {
+    order: 6;
+}
+
+.dsf__recurrency-option-list {
+    display: flex;
+    gap: 12px;
+    background: #f7f7f7;
+    /* Background contenedor tipo toggle */
+    padding: 4px;
+    border-radius: 8px;
+    justify-content: stretch;
+}
+
+.dsf__recurrency-option {
+    flex: 1;
+    padding: 10px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    background-color: transparent;
+    color: var(--color-dark-gray);
+    border: none;
+    border-radius: 6px;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dsf__recurrency-option-radio {
+    display: none;
+}
+
+.dsf__recurrency-option-label {
+    margin: 0;
+    padding: 0;
+}
+
+/* ACTIVO */
+.dsf__recurrency-option--selected {
+    background-color: var(--color-white) !important;
+    color: var(--color-red) !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+    font-weight: 700;
+}
+
+/* AMOUNTS - TARJETAS MODERNAS */
+.dsf__amount-option-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 24px;
+}
+
+.dsf__amount-option {
+    padding: 14px 0;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    color: var(--color-black);
+    font-weight: 600;
+    font-size: 15px;
+    text-align: center;
+    border-radius: var(--radius-btn);
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: var(--shadow-input);
+}
+
+.dsf__amount-option:hover {
+    border-color: var(--color-red);
+    transform: translateY(-2px);
+}
+
+/* SELECTED AMOUNT */
+.dsf__amount-option--selected {
+    background-color: var(--color-red) !important;
+    color: var(--color-white) !important;
+    border-color: var(--color-red) !important;
+    box-shadow: 0 4px 10px rgba(218, 26, 0, 0.25);
+    font-weight: 700;
+    transform: translateY(-2px);
+}
+
+.dsf__amount-option-input {
+    text-align: center;
+    background: transparent;
+    width: 100%;
+    border: none;
+    font: inherit;
+    color: inherit;
+    outline: none;
+    cursor: pointer;
+}
+
+/* 2. & 3. INPUTS COMPACTOS & PREMIUM */
+.dsf__group {
+    margin-bottom: 12px;
+    position: relative;
+}
+
+/* === TITULO DINÁMICO PASO 2 === */
+.dsf__group:has(input[type="email"])::before {
+    content: "Tus datos de contacto 📝";
+    display: block;
+    width: 100%;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--color-black);
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+.dsf__group input,
+.dsf__group select {
+    padding: 10px 14px;
+    /* Más compacto */
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-input);
+    font-size: 15px;
+    color: var(--color-black);
+    height: 44px;
+    /* Altura Stripe Standard */
+    width: 100%;
+    box-sizing: border-box;
+    transition: all 0.2s ease;
+    box-shadow: var(--shadow-input);
+}
+
+.dsf__group input::placeholder {
+    color: #999;
+    font-weight: 400;
+}
+
+.dsf__group input:focus,
+.dsf__group select:focus {
+    outline: none;
+    border-color: var(--color-red);
+    box-shadow: 0 0 0 3px var(--color-focus-ring);
+    background-color: #fffbfc;
+}
+
+/* 4. ERROR MESSAGES */
+.error-msg,
+.validation-error,
+.error {
+    display: block;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--color-red);
+    margin-top: 4px;
+    padding-left: 2px;
+}
+
+/* BUTTON NEXT - CTA PROMINENTE */
+.dsf__buttons-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 28px;
+}
+
+.dsf__button-next {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--color-red);
+    /* Gradiente sutil para volumen */
+    background: linear-gradient(180deg, #e31f05 0%, #c41900 100%);
+    color: transparent !important;
+    font-size: 0 !important;
+    border: none;
+    border-radius: var(--radius-btn);
+    cursor: pointer;
+    position: relative;
+    box-shadow: 0 4px 10px rgba(218, 26, 0, 0.25);
+    transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dsf__button-next::after {
+    content: "CONTINUAR ❤️";
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.dsf__button-next:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(218, 26, 0, 0.35);
+}
+
+.dsf__button-next:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 5px rgba(218, 26, 0, 0.2);
+}
+
+/* BUTTON PREV */
+.dsf__button-prev {
+    margin: 16px auto 0;
+    background: transparent;
+    border: none;
+    border-bottom: 1px constant transparent;
+    /* placeholder */
+    color: #888;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.dsf__button-prev:hover {
+    color: var(--color-black);
+    text-decoration: underline;
+}
+
+/* CHECKBOXES & LEGAL */
+.dsf__allow-upgrade-checkbox,
+.dsf__legal-notice-checkbox {
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    accent-color: var(--color-red);
+    cursor: pointer;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+.dsf__legal-notice-label,
+.dsf__allow-upgrade-label {
+    font-size: 12px;
+    color: #666;
+    line-height: 1.4;
+}
+
+.dsf__legal-notice-label a {
+    color: var(--color-black);
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 1px dotted #999;
+}
+
+/* RESPONSIVE */
+@media (max-width: 480px) {
+    .dsf {
+        padding: 24px 20px;
+        box-shadow: none;
+        border-radius: 0;
+    }
+
+    .dsf__amount-option-list {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+    }
+
+    .dsf__amount-option {
+        font-size: 14px;
+        padding: 12px 2px;
+    }
+
+    .dsf__recurrency-option {
+        font-size: 13px;
+    }
+
+    /* Inputs larger touch target */
+    .dsf__group input,
+    .dsf__group select {
+        height: 48px;
+        font-size: 16px;
+    }
+}
