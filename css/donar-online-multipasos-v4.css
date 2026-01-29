@@ -61,18 +61,18 @@ body {
 
 /* === TITULO DINÁMICO PASO 1 (Monto) === */
 /* === ESTRUCTURA Y ORDEN DEL PASO 1 === */
+/* RESTAURADO A FLUJO NATURAL (Montos arriba, Frecuencia abajo) */
 
-/* 1. Contenedor Flex para reordenar */
+/* 1. Contenedor Normal */
 .dsf {
-    display: flex;
-    flex-direction: column;
+    display: block;
+    /* Volvemos al bloque normal */
 }
 
 /* 2. Título Principal - Mensaje de Impacto (Rojo) */
 .dsf::before {
     content: "Hoy puedes hacer que una familia esté cerca a su hijo mientras recibe tratamiento médico ❤️";
-    order: -10;
-    /* SUPER PRIORIDAD: ARRIBA DE TODO */
+    /* order eliminado */
     display: block;
     width: 100%;
     font-size: 19px;
@@ -85,11 +85,12 @@ body {
     padding: 0 10px;
 }
 
-/* 3. Frecuencia - SEGUNDO LUGAR */
+/* 3. Frecuencia - SEGUNDO LUGAR (En flujo natural aparecerá después de montos si así está en el HTML) */
 .dsf__recurrency {
-    order: -5;
-    /* PRIORIDAD ALTA: Justo debajo del título */
+    /* order eliminado */
     margin-bottom: 20px;
+    margin-top: 20px;
+    /* Separación extra */
 }
 
 /* Subtítulo: Elige la frecuencia */
@@ -102,10 +103,9 @@ body {
     margin-bottom: 12px;
 }
 
-/* 4. Montos - TERCER LUGAR (El resto tiene order:0 así que esto flotará naturalmente o lo forzamos) */
+/* 4. Montos - PRIMER LUGAR (Default HTML) */
 .dsf__amount-option-list {
-    order: -1;
-    /* Ligeramente prioritaria para asegurarla antes de inputs raros */
+    /* order eliminado */
     margin-bottom: 24px;
 }
 
@@ -124,16 +124,15 @@ body {
 
 /* 5. Asegurar orden el resto */
 .dsf__allow-upgrade {
-    order: 2;
     margin-bottom: 15px;
 }
 
 .dsf__buttons-container {
-    order: 10;
+    margin-top: 20px;
 }
 
 .dsf__security-message {
-    order: 11;
+    margin-top: 10px;
 }
 
 .dsf__recurrency-option-list {
