@@ -110,22 +110,101 @@ body {
     content: "Queremos conocerte, cuéntanos un poco de ti 📝";
 }
 
-/* 3. Frecuencia - SEGUNDO LUGAR (En flujo natural aparecerá después de montos si así está en el HTML) */
+/* 3. CAJA DE CONTRASTE PARA FRECUENCIA */
 .dsf__recurrency {
-    /* order eliminado */
-    margin-bottom: 20px;
+    background-color: var(--color-white);
+    padding: 15px;
+    border-radius: var(--radius-card);
+    border: 1px solid #E0E0E0;
+    /* Borde sutil para contraste */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+    margin-bottom: 24px;
     margin-top: 20px;
-    /* Separación extra */
 }
 
-/* Subtítulo: Elige la frecuencia */
+/* Ajuste para que el título de frecuencia quede bien dentro o fuera */
 .dsf__recurrency::before {
-    content: "Elige la frecuencia";
-    display: block;
-    font-size: 16px;
-    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+/* 2. GAP SUPER COMPACTO (Estilo Imagen 3) */
+.dsf__group {
+    margin-bottom: 6px;
+    /* Gap mínimo entre filas */
+    padding: 0;
+    background: transparent;
+    position: relative;
+    /* Necesario para el label absoluto */
+}
+
+/* LABEL COMO PLACEHOLDER (Adentro y desaparece) */
+.dsf__group label {
+    display: block !important;
+    position: absolute;
+    top: 50%;
+    left: 14px;
+    transform: translateY(-50%);
+
+    font-size: 15px;
+    font-weight: 400;
+    /* Peso normal de placeholder */
+    color: #888;
+    /* Gris placeholder */
+
+    margin: 0;
+    padding: 0;
+    text-transform: none;
+    pointer-events: none;
+    /* Click pasa al input */
+    z-index: 5;
+    transition: all 0.1s ease;
+    background: transparent !important;
+    width: auto;
+    max-width: 90%;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+/* TRUCO: Desaparecer label al escribir (Focus o Valido) */
+.dsf__group:focus-within label,
+.dsf__group input:valid~label,
+.dsf__group select:valid~label,
+.dsf__group input:not(:placeholder-shown)~label {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* INPUTS "SOLO CAJA" */
+.dsf__group input,
+.dsf__group select {
+    padding: 12px 14px;
+    /* Un poco más de aire interno */
+    background-color: var(--color-white) !important;
+    border: 1px solid #ccc;
+    border-radius: var(--radius-input);
+    font-size: 15px;
     color: var(--color-black);
-    margin-bottom: 12px;
+    height: 48px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: all 0.2s ease;
+    box-shadow: none;
+}
+
+/* PLACEHOLDERS NATIVOS (Ocultar) */
+.dsf__group input::placeholder {
+    opacity: 0;
+    color: transparent !important;
+}
+
+.dsf__group input:focus,
+.dsf__group select:focus {
+    outline: none;
+    border-color: var(--color-red);
+    box-shadow: 0 0 0 1px var(--color-red);
+    z-index: 2;
+    /* Traer al frente */
 }
 
 /* 4. Montos - PRIMER LUGAR (Default HTML) */
