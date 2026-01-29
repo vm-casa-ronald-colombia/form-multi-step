@@ -61,50 +61,162 @@ body {
 
 /* === TITULO DINÁMICO PASO 1 (Monto) === */
 /* === ESTRUCTURA Y ORDEN DEL PASO 1 === */
+/* RESTAURADO A FLUJO NATURAL (Montos arriba, Frecuencia abajo) */
 
-/* 1. Contenedor Flex para reordenar */
-/* NOTA: Usamos un selector general del paso 1 si existe, o el dsf directo asumiendo estructura plana */
+/* 1. Contenedor Normal */
 .dsf {
-    display: flex;
-    flex-direction: column;
+    display: block;
+    /* Volvemos al bloque normal */
 }
 
-/* 2. Título Principal "Hazte Amigo del Alma" - Arriba de todo */
+/* 2. Título Principal - DINÁMICO POR PASOS */
 .dsf::before {
-    content: "Hazte Amigo del Alma ❤️";
-    order: 1;
-    /* PRIMERO */
+    /* CONTENIDO POR DEFECTO (PASO 1) */
+    content: "Hoy puedes hacer que una familia esté cerca a su hijo mientras recibe tratamiento médico ❤️";
+
     display: block;
     width: 100%;
-    font-size: 22px;
+    font-size: 19px;
+    line-height: 1.3;
     font-weight: 800;
-    color: var(--color-black);
+    color: var(--color-red);
     text-align: center;
-    margin-bottom: 24px;
-    letter-spacing: -0.5px;
+    margin-bottom: 20px;
+    letter-spacing: -0.3px;
+    padding: 0 10px;
 }
 
-/* 3. Frecuencia - SEGUNDO LUGAR */
+/* PASO 2: DATOS DE CONTACTO */
+/* "Queremos conocerte..." */
+.dsf:has(input[type="email"]):not(:has(.dsf__amount-option-list))::before {
+    content: "Queremos conocerte, cuéntanos un poco de ti 📝";
+    font-size: 20px;
+    margin-bottom: 24px;
+}
+
+/* PASO 3: MÉTODO DE PAGO (Tarjeta/PSE) */
+/* Detectamos inputs de tarjeta o select de pago que aparece al final */
+/* PASO 3: MÉTODO DE PAGO (Tarjeta/PSE) */
+/* Detectamos inputs de tarjeta, select de pago o checkboxes legales del final */
+.dsf:has(select[name="payment_method_id"])::before,
+.dsf:has(.dsf__card-data)::before,
+.dsf:has(input[name="card_number"])::before,
+.dsf:has(input[autocomplete="cc-number"])::before,
+/* Tarjeta auto-fill */
+.dsf:has(.dsf__legal-notice-checkbox)::before {
+    /* Checkboxes legales (Autorizo/Acepto) */
+    content: "¡Ya estás a un solo paso de ayudar a una familia! ❤️";
+    font-size: 21px;
+    /* Destacado */
+    color: var(--color-red);
+}
+
+/* Fallback simple Paso 2 */
+.dsf:has(.dsf__step-2-active)::before {
+    content: "Queremos conocerte, cuéntanos un poco de ti 📝";
+}
+
+/* 3. CAJA DE CONTRASTE PARA FRECUENCIA */
 .dsf__recurrency {
-    order: 2;
-    /* Arriba de los montos */
+    background-color: var(--color-white);
+    padding: 15px;
+    border-radius: var(--radius-card);
+    border: 1px solid #E0E0E0;
+    /* Borde sutil para contraste */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
     margin-bottom: 24px;
+    margin-top: 20px;
 }
 
-/* Subtítulo: Elige la frecuencia */
+/* Ajuste para que el título de frecuencia quede bien dentro o fuera */
 .dsf__recurrency::before {
-    content: "Elige la frecuencia";
-    display: block;
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--color-black);
-    margin-bottom: 12px;
+    margin-top: 0;
+    margin-bottom: 10px;
 }
 
-/* 4. Montos - TERCER LUGAR */
+/* 2. GAP SUPER COMPACTO (Estilo Imagen 3) */
+.dsf__group {
+    margin-bottom: 6px;
+    /* Gap mínimo entre filas */
+    padding: 0;
+    background: transparent;
+    position: relative;
+    /* Necesario para el label absoluto */
+}
+
+/* LABEL COMO PLACEHOLDER (Adentro y desaparece) */
+.dsf__group label {
+    display: block !important;
+    position: absolute;
+    top: 50%;
+    left: 14px;
+    transform: translateY(-50%);
+
+    font-size: 15px;
+    font-weight: 400;
+    /* Peso normal de placeholder */
+    color: #888;
+    /* Gris placeholder */
+
+    margin: 0;
+    padding: 0;
+    text-transform: none;
+    pointer-events: none;
+    /* Click pasa al input */
+    z-index: 5;
+    transition: all 0.1s ease;
+    background: transparent !important;
+    width: auto;
+    max-width: 90%;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+/* TRUCO: Desaparecer label al escribir (Focus o Valido) */
+.dsf__group:focus-within label,
+.dsf__group input:valid~label,
+.dsf__group select:valid~label,
+.dsf__group input:not(:placeholder-shown)~label {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* INPUTS "SOLO CAJA" */
+.dsf__group input,
+.dsf__group select {
+    padding: 12px 14px;
+    /* Un poco más de aire interno */
+    background-color: var(--color-white) !important;
+    border: 1px solid #ccc;
+    border-radius: var(--radius-input);
+    font-size: 15px;
+    color: var(--color-black);
+    height: 48px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: all 0.2s ease;
+    box-shadow: none;
+}
+
+/* PLACEHOLDERS NATIVOS (Ocultar) */
+.dsf__group input::placeholder {
+    opacity: 0;
+    color: transparent !important;
+}
+
+.dsf__group input:focus,
+.dsf__group select:focus {
+    outline: none;
+    border-color: var(--color-red);
+    box-shadow: 0 0 0 1px var(--color-red);
+    z-index: 2;
+    /* Traer al frente */
+}
+
+/* 4. Montos - PRIMER LUGAR (Default HTML) */
 .dsf__amount-option-list {
-    order: 3;
-    /* Debajo de frecuencia */
+    /* order eliminado */
+    margin-bottom: 24px;
 }
 
 /* Subtítulo: Elige el monto */
@@ -118,64 +230,82 @@ body {
     color: var(--color-black);
     margin-bottom: 12px;
     text-align: left;
-    /* Alineado izq como el de frecuencia */
 }
 
-/* 5. Asegurar que otros elementos sigan el flujo natural (order alto auto) o definirlos */
+/* 5. Asegurar orden el resto */
 .dsf__allow-upgrade {
-    order: 4;
+    margin-bottom: 15px;
 }
 
 .dsf__buttons-container {
-    order: 5;
+    margin-top: 20px;
 }
 
 .dsf__security-message {
-    order: 6;
+    margin-top: 10px;
 }
 
 .dsf__recurrency-option-list {
     display: flex;
     gap: 12px;
-    background: #f7f7f7;
-    /* Background contenedor tipo toggle */
-    padding: 4px;
-    border-radius: 8px;
-    justify-content: stretch;
-}
-
-.dsf__recurrency-option {
-    flex: 1;
-    padding: 10px;
-    text-align: center;
-    font-weight: 600;
-    font-size: 13px;
-    cursor: pointer;
-    background-color: transparent;
-    color: var(--color-dark-gray);
-    border: none;
-    border-radius: 6px;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.dsf__recurrency-option-radio {
-    display: none;
-}
-
-.dsf__recurrency-option-label {
-    margin: 0;
+    background: transparent;
     padding: 0;
 }
 
-/* ACTIVO */
+/* FRECUENCIA: Estilo Radio Button (Texto + Círculo) */
+.dsf__recurrency-option {
+    flex: 1;
+    padding: 10px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    background-color: transparent;
+    /* Sin fondo sólido */
+    color: var(--color-black);
+    border: none;
+    display: flex;
+    justify-content: center;
+    /* Centrado como en la foto referencial */
+    align-items: center;
+    gap: 8px;
+    /* Espacio entre bolita y texto */
+    transition: opacity 0.2s;
+}
+
+/* Bolita del Radio Button - visible y grande */
+.dsf__recurrency-option-radio {
+    display: inline-block !important;
+    /* Restauramos visualización */
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--color-red);
+    border-radius: 50%;
+    position: relative;
+    margin: 0;
+    accent-color: var(--color-red);
+    /* Color nativo del navegador */
+}
+
+/* Texto limpio */
+.dsf__recurrency-option-label {
+    margin: 0;
+    padding: 0;
+    font-family: inherit;
+}
+
+/* Estado Activo: Solo oscurecer un poco o cambiar peso */
 .dsf__recurrency-option--selected {
-    background-color: var(--color-white) !important;
+    background-color: transparent !important;
+    /* Sin fondo rojo */
     color: var(--color-red) !important;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
     font-weight: 700;
+    box-shadow: none;
+    /* Sin sombra */
+}
+
+.dsf__recurrency-option--selected .dsf__recurrency-option-label {
+    color: var(--color-red) !important;
 }
 
 /* AMOUNTS - TARJETAS MODERNAS */
@@ -229,53 +359,67 @@ body {
     cursor: pointer;
 }
 
-/* 2. & 3. INPUTS COMPACTOS & PREMIUM */
+/* 2. & 3. INPUTS CON LABELS CLAROS (Estilo Seguro) */
 .dsf__group {
-    margin-bottom: 12px;
-    position: relative;
+    margin-bottom: 8px;
+    /* Reducido de 15px para compactar */
+    background: transparent;
 }
 
-/* === TITULO DINÁMICO PASO 2 === */
-.dsf__group:has(input[type="email"])::before {
-    content: "Tus datos de contacto 📝";
-    display: block;
-    width: 100%;
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--color-black);
-    text-align: center;
-    margin-bottom: 20px;
-    margin-top: 10px;
+/* Label como Título de Campo */
+.dsf__group label {
+    display: block !important;
+    position: static;
+    transform: none;
+
+    font-size: 14px;
+    font-weight: 600;
+    color: #444;
+    /* Gris oscuro legible */
+
+    margin-bottom: 2px;
+    /* Reducido de 6px */
+    padding: 0;
+    text-transform: none;
+    pointer-events: auto;
+    background: transparent !important;
 }
 
+/* Efecto Flotante: ELIMINADO en favor de estabilidad */
+.dsf__group:focus-within label {
+    transform: none;
+    color: var(--color-red);
+}
+
+/* Ajuste específico para Inputs */
 .dsf__group input,
 .dsf__group select {
     padding: 10px 14px;
-    /* Más compacto */
-    background-color: var(--color-white);
-    border: 1px solid var(--color-border);
+    background-color: transparent !important;
+    background: var(--color-white) !important;
+    border: 1px solid #ccc;
     border-radius: var(--radius-input);
     font-size: 15px;
     color: var(--color-black);
-    height: 44px;
-    /* Altura Stripe Standard */
+    height: 48px;
+    /* Un poco más alto para elegancia */
     width: 100%;
     box-sizing: border-box;
     transition: all 0.2s ease;
-    box-shadow: var(--shadow-input);
+    box-shadow: none;
 }
 
+/* PLACEHOLDERS NATIVOS (Ocultar) */
 .dsf__group input::placeholder {
-    color: #999;
-    font-weight: 400;
+    opacity: 0;
+    color: transparent !important;
 }
 
 .dsf__group input:focus,
 .dsf__group select:focus {
     outline: none;
     border-color: var(--color-red);
-    box-shadow: 0 0 0 3px var(--color-focus-ring);
-    background-color: #fffbfc;
+    box-shadow: 0 0 0 1px var(--color-red);
 }
 
 /* 4. ERROR MESSAGES */
@@ -283,10 +427,11 @@ body {
 .validation-error,
 .error {
     display: block;
-    font-size: 12px;
-    font-weight: 500;
+    font-size: 11px;
+    font-weight: 600;
     color: var(--color-red);
     margin-top: 4px;
+    text-align: right;
     padding-left: 2px;
 }
 
@@ -301,7 +446,6 @@ body {
     width: 100%;
     padding: 15px;
     background-color: var(--color-red);
-    /* Gradiente sutil para volumen */
     background: linear-gradient(180deg, #e31f05 0%, #c41900 100%);
     color: transparent !important;
     font-size: 0 !important;
@@ -317,7 +461,7 @@ body {
 }
 
 .dsf__button-next::after {
-    content: "CONTINUAR ❤️";
+    content: "CONTINUAR 💛";
     color: #fff;
     font-size: 16px;
     font-weight: 700;
