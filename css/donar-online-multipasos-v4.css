@@ -142,49 +142,60 @@ body {
     padding: 0;
 }
 
+/* FRECUENCIA: Estilo Radio Button (Texto + Círculo) */
 .dsf__recurrency-option {
     flex: 1;
-    padding: 12px 20px;
-    text-align: center;
-    font-weight: 700;
-    /* Más negrita */
-    font-size: 14px;
+    padding: 10px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 15px;
     cursor: pointer;
-
-    /* ESTADO INACTIVO (COMO EN FOTO 2) */
-    background-color: #FFFFF0;
-    /* Crema muy claro casi blanco */
+    background-color: transparent;
+    /* Sin fondo sólido */
     color: var(--color-black);
     border: none;
-    /* Sin borde */
-    border-radius: 6px;
-    transition: all 0.2s;
     display: flex;
     justify-content: center;
+    /* Centrado como en la foto referencial */
     align-items: center;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-    /* Sutil sombra */
+    gap: 8px;
+    /* Espacio entre bolita y texto */
+    transition: opacity 0.2s;
 }
 
+/* Bolita del Radio Button - visible y grande */
 .dsf__recurrency-option-radio {
-    display: none;
+    display: inline-block !important;
+    /* Restauramos visualización */
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--color-red);
+    border-radius: 50%;
+    position: relative;
+    margin: 0;
+    accent-color: var(--color-red);
+    /* Color nativo del navegador */
 }
 
+/* Texto limpio */
 .dsf__recurrency-option-label {
     margin: 0;
     padding: 0;
+    font-family: inherit;
 }
 
-/* ACTIVO - ROJO SOLIDO (COMO EN FOTO 2) */
+/* Estado Activo: Solo oscurecer un poco o cambiar peso */
 .dsf__recurrency-option--selected {
-    background-color: var(--color-red) !important;
-    color: white !important;
-    /* Texto blanco sobre rojo */
-    box-shadow: 0 4px 6px rgba(213, 43, 30, 0.3);
+    background-color: transparent !important;
+    /* Sin fondo rojo */
+    color: var(--color-red) !important;
+    font-weight: 700;
+    box-shadow: none;
+    /* Sin sombra */
 }
 
 .dsf__recurrency-option--selected .dsf__recurrency-option-label {
-    color: white !important;
+    color: var(--color-red) !important;
 }
 
 /* AMOUNTS - TARJETAS MODERNAS */
@@ -244,6 +255,18 @@ body {
     position: relative;
 }
 
+/* RESTAURAR LABELS (Títulos de campo) */
+.dsf__group label {
+    display: block !important;
+    /* Mostrarlos */
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--color-black);
+    margin-bottom: 6px;
+    text-align: left;
+    margin-left: 2px;
+}
+
 /* === TITULO DINÁMICO PASO 2 === */
 .dsf__group:has(input[type="email"])::before {
     content: "Tus datos de contacto 📝";
@@ -260,23 +283,25 @@ body {
 .dsf__group input,
 .dsf__group select {
     padding: 10px 14px;
-    /* Más compacto */
     background-color: var(--color-white);
-    border: 1px solid var(--color-border);
+    border: 1px solid #ccc;
+    /* Borde un poco más visible */
     border-radius: var(--radius-input);
     font-size: 15px;
     color: var(--color-black);
-    height: 44px;
-    /* Altura Stripe Standard */
+    height: 46px;
     width: 100%;
     box-sizing: border-box;
     transition: all 0.2s ease;
-    box-shadow: var(--shadow-input);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
+/* PLACEHOLDERS ALTO CONTRASTE */
 .dsf__group input::placeholder {
-    color: #999;
-    font-weight: 400;
+    color: #555 !important;
+    /* Gris oscuro para contraste */
+    font-weight: 500;
+    opacity: 1;
 }
 
 .dsf__group input:focus,
@@ -284,7 +309,7 @@ body {
     outline: none;
     border-color: var(--color-red);
     box-shadow: 0 0 0 3px var(--color-focus-ring);
-    background-color: #fffbfc;
+    background-color: #fff;
 }
 
 /* 4. ERROR MESSAGES */
