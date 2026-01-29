@@ -255,30 +255,20 @@ body {
     position: relative;
 }
 
-/* RESTAURAR LABELS (Títulos de campo) */
+/* RESTAURAR LABELS (Títulos de campo - Estilo Upper Tiny) */
 .dsf__group label {
     display: block !important;
-    /* Mostrarlos */
-    font-size: 13px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
     font-weight: 700;
-    color: var(--color-black);
-    margin-bottom: 6px;
+    color: #444;
+    margin-bottom: 4px;
     text-align: left;
     margin-left: 2px;
 }
 
-/* === TITULO DINÁMICO PASO 2 === */
-.dsf__group:has(input[type="email"])::before {
-    content: "Tus datos de contacto 📝";
-    display: block;
-    width: 100%;
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--color-black);
-    text-align: center;
-    margin-bottom: 20px;
-    margin-top: 10px;
-}
+/* (Eliminado título 'Tus datos de contacto' para limpiar layout) */
 
 .dsf__group input,
 .dsf__group select {
