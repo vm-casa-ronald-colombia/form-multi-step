@@ -96,9 +96,15 @@ body {
 
 /* PASO 3: MÉTODO DE PAGO (Tarjeta/PSE) */
 /* Detectamos inputs de tarjeta o select de pago que aparece al final */
+/* PASO 3: MÉTODO DE PAGO (Tarjeta/PSE) */
+/* Detectamos inputs de tarjeta, select de pago o checkboxes legales del final */
 .dsf:has(select[name="payment_method_id"])::before,
 .dsf:has(.dsf__card-data)::before,
-.dsf:has(input[name="card_number"])::before {
+.dsf:has(input[name="card_number"])::before,
+.dsf:has(input[autocomplete="cc-number"])::before,
+/* Tarjeta auto-fill */
+.dsf:has(.dsf__legal-notice-checkbox)::before {
+    /* Checkboxes legales (Autorizo/Acepto) */
     content: "¡Ya estás a un solo paso de ayudar a una familia! ❤️";
     font-size: 21px;
     /* Destacado */
