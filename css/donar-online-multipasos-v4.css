@@ -86,18 +86,28 @@ body {
     padding: 0 10px;
 }
 
-/* PASO 2: Cuando aparecen los campos de contacto */
-/* Sobrescribimos el título si detectamos el campo de email visible en el flujo del paso 2 */
-/* NOTA: Usamos :has() y un selector de input común del paso 2 */
+/* PASO 2: DATOS DE CONTACTO */
+/* "Queremos conocerte..." */
 .dsf:has(input[type="email"]):not(:has(.dsf__amount-option-list))::before {
-    content: "Completa tus datos para finalizar la ayuda 📝";
-    font-size: 22px;
-    /* Un poco más grande al ser texto corto */
+    content: "Queremos conocerte, cuéntanos un poco de ti 📝";
+    font-size: 20px;
+    margin-bottom: 24px;
 }
 
-/* Fallback simple por si el 'not:has' falla (Paso 2 a fuerza bruta si el paso 1 desaparece del DOM) */
+/* PASO 3: MÉTODO DE PAGO (Tarjeta/PSE) */
+/* Detectamos inputs de tarjeta o select de pago que aparece al final */
+.dsf:has(select[name="payment_method_id"])::before,
+.dsf:has(.dsf__card-data)::before,
+.dsf:has(input[name="card_number"])::before {
+    content: "¡Ya estás a un solo paso de ayudar a una familia! ❤️";
+    font-size: 21px;
+    /* Destacado */
+    color: var(--color-red);
+}
+
+/* Fallback simple Paso 2 */
 .dsf:has(.dsf__step-2-active)::before {
-    content: "Completa tus datos para finalizar la ayuda 📝";
+    content: "Queremos conocerte, cuéntanos un poco de ti 📝";
 }
 
 /* 3. Frecuencia - SEGUNDO LUGAR (En flujo natural aparecerá después de montos si así está en el HTML) */
