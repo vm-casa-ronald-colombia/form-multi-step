@@ -55,14 +55,17 @@ body {
 }
 
 /* === TITULO DINÁMICO PASO 1 (Monto) === */
-.dsf__recurrency::before {
+.dsf__amount-option-list::before {
     content: "Hazte Amigo del Alma ❤️";
     display: block;
+    width: 100%;
+    grid-column: 1 / -1;
+    /* Ocupar todo el ancho del grid */
     font-size: 20px;
     font-weight: 700;
     color: var(--color-black);
     text-align: center;
-    margin-bottom: 24px;
+    margin-bottom: 16px;
     letter-spacing: -0.5px;
 }
 
