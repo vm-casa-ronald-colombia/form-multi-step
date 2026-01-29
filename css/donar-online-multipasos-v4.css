@@ -274,50 +274,34 @@ body {
     cursor: pointer;
 }
 
-/* 2. & 3. INPUTS CON FLOATING LABELS (Estilo Placeholder) */
+/* 2. & 3. INPUTS CON LABELS CLAROS (Estilo Seguro) */
 .dsf__group {
-    margin-bottom: 20px;
-    /* Más espacio para label flotante */
-    position: relative;
+    margin-bottom: 15px;
     background: transparent;
 }
 
-/* Label posicionado como Placeholder */
+/* Label como Título de Campo */
 .dsf__group label {
     display: block !important;
-    position: absolute;
-    top: 50%;
-    /* Centrado vertical */
-    left: 14px;
-    transform: translateY(-50%);
+    position: static;
+    transform: none;
 
-    font-size: 15px;
-    /* Tamaño normal de placeholder */
-    font-weight: 500;
-    color: #999;
-    /* Gris placeholder */
+    font-size: 14px;
+    font-weight: 600;
+    color: #444;
+    /* Gris oscuro legible */
 
-    pointer-events: none;
-    /* Click traspasa al input */
-    transition: all 0.2s ease;
-    z-index: 10;
-    background-color: transparent !important;
-    padding: 0 4px;
-    margin: 0;
+    margin-bottom: 6px;
+    padding: 0;
     text-transform: none;
-    /* Normal case */
-    letter-spacing: normal;
+    pointer-events: auto;
+    background: transparent !important;
 }
 
-/* Efecto Flotante: Cuando hay focus */
+/* Efecto Flotante: ELIMINADO en favor de estabilidad */
 .dsf__group:focus-within label {
-    top: 0;
-    transform: translateY(-50%) scale(0.9);
-    font-size: 12px;
-    font-weight: 700;
+    transform: none;
     color: var(--color-red);
-    background-color: var(--color-white) !important;
-    /* Tapa el borde del input */
 }
 
 /* Ajuste específico para Inputs */
