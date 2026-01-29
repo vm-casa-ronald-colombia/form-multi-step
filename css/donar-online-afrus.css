@@ -103,24 +103,42 @@ button.active,
 /* Layout de opciones */
 .dsf__recurrency-option-list {
     display: flex;
+    /* Flex permite más fácil 50% exacto que grid con gap variable */
+    justify-content: space-between;
     gap: 12px;
     margin-bottom: 20px;
     background: transparent;
     padding: 0;
+    width: 100%;
 }
 
 .dsf__recurrency-option {
     flex: 1;
+    /* Ocupa el 50% - gap */
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 12px !important;
+    height: 48px;
+    background-color: var(--color-white);
+    border: 1px solid #d1d5db !important;
+    color: #4F73AC !important;
+    /* Azul por defecto en texto */
+    font-weight: 700;
 }
 
+.dsf__recurrency-option--selected {
+    background-color: #2B6CB0 !important;
+    color: white !important;
+    border-color: #2B6CB0 !important;
+}
+
+/* Montos Grid */
 .dsf__amount-option-list {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
+    gap: 10px;
     margin-bottom: 20px;
 }
 
@@ -128,48 +146,66 @@ button.active,
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 46px;
+    /* Altura uniforme */
+    border-radius: 12px !important;
+    /* Bordes consistentes */
+    border: 1px solid #d1d5db !important;
+    font-weight: 600;
 }
 
-/* ✅ Caja de impacto */
-.dsf__impact-box,
-.impact-box {
-    background: #f3f3f3 !important;
-    border-radius: 16px !important;
-    padding: 16px !important;
-    font-weight: 600 !important;
-    text-align: center !important;
-    margin-top: 18px !important;
-    color: #333;
-    font-family: 'Inter', sans-serif;
-    font-size: 14px;
-    line-height: 1.5;
-    border: 1px solid #e5e7eb;
+/* Ajuste de GAPs en filas de inputs (Paso 2) */
+.row {
+    margin-left: -6px !important;
+    margin-right: -6px !important;
 }
 
-/* Inputs */
+div[class^="col-"],
+div[class*=" col-"] {
+    padding-left: 6px !important;
+    padding-right: 6px !important;
+}
+
+/* Inputs Compactos */
 .dsf__group {
-    margin-bottom: 16px;
+    margin-bottom: 12px;
+    /* Reducido de 16px */
 }
 
 .dsf__group label {
-    color: var(--color-text-dark);
-    font-size: 14px;
-    font-weight: 500;
-    margin-bottom: 6px;
+    color: #4B5563;
+    /* Gris oscuro suave */
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    /* Pegadito al input */
     display: block;
+    font-family: 'Inter', sans-serif;
 }
 
 .dsf__group input,
 .dsf__group select {
     width: 100%;
-    padding: 12px;
+    padding: 10px 12px;
+    /* Padding más compacto */
     border-radius: 8px;
-    border: 1px solid #d1d5db;
-    margin-bottom: 12px;
+    /* Bordes suaves */
+    border: 1px solid #E5E7EB;
+    background-color: #F9FAFB;
     font-family: 'Inter', sans-serif;
-    font-size: 15px;
+    font-size: 14px;
     box-sizing: border-box;
-    height: 48px;
+    height: 42px;
+    /* Altura controlada */
+    color: #111827;
+}
+
+.dsf__group input:focus,
+.dsf__group select:focus {
+    border-color: #2B6CB0;
+    background-color: #fff;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(43, 108, 176, 0.1);
 }
 
 /* ✅ CTA principal (Botón Siguiente/Donar) */
