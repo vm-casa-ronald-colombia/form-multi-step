@@ -274,57 +274,81 @@ body {
     cursor: pointer;
 }
 
-/* 2. & 3. INPUTS COMPACTOS & PREMIUM */
+/* 2. & 3. INPUTS CON FLOATING LABELS (Estilo Placeholder) */
 .dsf__group {
-    margin-bottom: 12px;
+    margin-bottom: 20px;
+    /* Más espacio para label flotante */
     position: relative;
+    background: transparent;
 }
 
-/* RESTAURAR LABELS (Títulos de campo - Estilo Upper Tiny) */
+/* Label posicionado como Placeholder */
 .dsf__group label {
     display: block !important;
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    font-weight: 700;
-    color: #444;
-    margin-bottom: 4px;
-    text-align: left;
-    margin-left: 2px;
+    position: absolute;
+    top: 50%;
+    /* Centrado vertical */
+    left: 14px;
+    transform: translateY(-50%);
+
+    font-size: 15px;
+    /* Tamaño normal de placeholder */
+    font-weight: 500;
+    color: #999;
+    /* Gris placeholder */
+
+    pointer-events: none;
+    /* Click traspasa al input */
+    transition: all 0.2s ease;
+    z-index: 10;
+    background-color: transparent !important;
+    padding: 0 4px;
+    margin: 0;
+    text-transform: none;
+    /* Normal case */
+    letter-spacing: normal;
 }
 
-/* (Eliminado título 'Tus datos de contacto' para limpiar layout) */
+/* Efecto Flotante: Cuando hay focus */
+.dsf__group:focus-within label {
+    top: 0;
+    transform: translateY(-50%) scale(0.9);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--color-red);
+    background-color: var(--color-white) !important;
+    /* Tapa el borde del input */
+}
 
+/* Ajuste específico para Inputs */
 .dsf__group input,
 .dsf__group select {
     padding: 10px 14px;
-    background-color: var(--color-white);
+    background-color: transparent !important;
+    background: var(--color-white) !important;
     border: 1px solid #ccc;
-    /* Borde un poco más visible */
     border-radius: var(--radius-input);
     font-size: 15px;
     color: var(--color-black);
-    height: 46px;
+    height: 48px;
+    /* Un poco más alto para elegancia */
     width: 100%;
     box-sizing: border-box;
     transition: all 0.2s ease;
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+    box-shadow: none;
 }
 
-/* PLACEHOLDERS ALTO CONTRASTE */
+/* PLACEHOLDERS NATIVOS (Ocultar) */
 .dsf__group input::placeholder {
-    color: #555 !important;
-    /* Gris oscuro para contraste */
-    font-weight: 500;
-    opacity: 1;
+    opacity: 0;
+    color: transparent !important;
 }
 
 .dsf__group input:focus,
 .dsf__group select:focus {
     outline: none;
     border-color: var(--color-red);
-    box-shadow: 0 0 0 3px var(--color-focus-ring);
-    background-color: #fff;
+    box-shadow: 0 0 0 1px var(--color-red);
 }
 
 /* 4. ERROR MESSAGES */
@@ -332,10 +356,11 @@ body {
 .validation-error,
 .error {
     display: block;
-    font-size: 12px;
-    font-weight: 500;
+    font-size: 11px;
+    font-weight: 600;
     color: var(--color-red);
     margin-top: 4px;
+    text-align: right;
     padding-left: 2px;
 }
 
@@ -350,7 +375,6 @@ body {
     width: 100%;
     padding: 15px;
     background-color: var(--color-red);
-    /* Gradiente sutil para volumen */
     background: linear-gradient(180deg, #e31f05 0%, #c41900 100%);
     color: transparent !important;
     font-size: 0 !important;
@@ -366,7 +390,7 @@ body {
 }
 
 .dsf__button-next::after {
-    content: "CONTINUAR ❤️";
+    content: "CONTINUAR 💛";
     color: #fff;
     font-size: 16px;
     font-weight: 700;
