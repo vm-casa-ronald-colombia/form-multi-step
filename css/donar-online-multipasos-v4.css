@@ -69,10 +69,11 @@ body {
     /* Volvemos al bloque normal */
 }
 
-/* 2. Título Principal - Mensaje de Impacto (Rojo) */
+/* 2. Título Principal - DINÁMICO POR PASOS */
 .dsf::before {
+    /* CONTENIDO POR DEFECTO (PASO 1) */
     content: "Hoy puedes hacer que una familia esté cerca a su hijo mientras recibe tratamiento médico ❤️";
-    /* order eliminado */
+
     display: block;
     width: 100%;
     font-size: 19px;
@@ -83,6 +84,20 @@ body {
     margin-bottom: 20px;
     letter-spacing: -0.3px;
     padding: 0 10px;
+}
+
+/* PASO 2: Cuando aparecen los campos de contacto */
+/* Sobrescribimos el título si detectamos el campo de email visible en el flujo del paso 2 */
+/* NOTA: Usamos :has() y un selector de input común del paso 2 */
+.dsf:has(input[type="email"]):not(:has(.dsf__amount-option-list))::before {
+    content: "Completa tus datos para finalizar la ayuda 📝";
+    font-size: 22px;
+    /* Un poco más grande al ser texto corto */
+}
+
+/* Fallback simple por si el 'not:has' falla (Paso 2 a fuerza bruta si el paso 1 desaparece del DOM) */
+.dsf:has(.dsf__step-2-active)::before {
+    content: "Completa tus datos para finalizar la ayuda 📝";
 }
 
 /* 3. Frecuencia - SEGUNDO LUGAR (En flujo natural aparecerá después de montos si así está en el HTML) */
