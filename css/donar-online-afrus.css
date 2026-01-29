@@ -150,6 +150,25 @@ button.active,
     box-shadow: 0 4px 6px rgba(43, 108, 176, 0.2);
 }
 
+/* 🔥 PARCHE DE EMERGENCIA: Ocultar los inputs nativos que se superponen 🔥 */
+.dsf__recurrency-option input,
+div[class*="recurrency"] input[type="radio"] {
+    opacity: 0 !important;
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    pointer-events: none !important;
+    margin: 0 !important;
+}
+
+/* Asegurar que el label/texto quede visible por encima */
+.dsf__recurrency-option label,
+.dsf__recurrency-option span {
+    z-index: 5;
+    position: relative;
+}
+
 /* Montos Grid */
 .dsf__amount-option-list {
     display: grid;
