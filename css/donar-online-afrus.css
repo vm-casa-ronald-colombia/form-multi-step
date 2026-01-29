@@ -118,60 +118,79 @@ button.active,
     color: white !important;
 }
 
-/* Layout de opciones - FRECUENCIA (Forzado Agresivo) */
-div[class*="recurrency"],
-.dsf__recurrency-option-list,
-.donation-flow-step-recurring-period {
+/* Layout de opciones - FRECUENCIA (Corregido) */
+div[class*="recurrency"] {
     display: flex !important;
-    flex-direction: row !important;
-    justify-content: space-between !important;
     gap: 12px !important;
     width: 100% !important;
-    margin-bottom: 20px !important;
+    justify-content: space-between !important;
+    flex-direction: row !important;
 }
 
-/* Opciones individuales (Mensual / Una vez) */
+/* Opciones individuales */
 div[class*="recurrency-option"],
-.dsf__recurrency-option,
-.donation-flow-step-recurring-period-option {
-    flex: 1 1 0px !important;
-    /* Force equal width */
+.dsf__recurrency-option {
+    position: relative !important;
+    flex: 1 !important;
     width: 50% !important;
-    max-width: 50% !important;
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
-    padding: 12px 0 !important;
-    margin: 0 !important;
+    padding: 12px !important;
     border-radius: 12px !important;
     border: 1px solid #d1d5db !important;
     background-color: var(--color-white) !important;
-    color: #4F73AC !important;
-    font-weight: 700 !important;
     cursor: pointer !important;
+    height: 48px !important;
     text-align: center !important;
-    text-transform: uppercase !important;
-    font-size: 14px !important;
 }
 
-/* Estado Seleccionado */
-div[class*="selected"],
-.dsf__recurrency-option--selected,
-.active {
+/* OCULTAR RADIO NATIVO (Causa de los óvalos feos) */
+div[class*="recurrency-option"] input[type="radio"],
+div[class*="recurrency-option"] input,
+.dsf__recurrency-option input {
+    position: absolute !important;
+    opacity: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+    margin: 0 !important;
+    pointer-events: none !important;
+    appearance: none !important;
+    /* Standard property */
+    -webkit-appearance: none !important;
+}
+
+/* TEXTO DEL LABEL (Restaurar visibilidad) */
+div[class*="recurrency-option"] label,
+div[class*="recurrency-option"] span {
+    z-index: 2 !important;
+    color: #4F73AC !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    font-size: 14px !important;
+    pointer-events: none !important;
+    /* Click pasa al contenedor */
+    display: block !important;
+    width: 100% !important;
+    text-align: center !important;
+    margin: 0 !important;
+}
+
+/* ESTADO SELECCIONADO */
+div[class*="recurrency-option"].active,
+div[class*="recurrency-option"].selected,
+.dsf__recurrency-option--selected {
     background-color: #2B6CB0 !important;
-    color: white !important;
     border-color: #2B6CB0 !important;
     box-shadow: 0 4px 6px rgba(43, 108, 176, 0.2) !important;
 }
 
-/* Selector para labels internos si existen */
-div[class*="recurrency-option"] label,
-div[class*="recurrency-option"] span {
-    color: inherit !important;
-    font-weight: inherit !important;
-    cursor: pointer !important;
-    display: block !important;
-    width: 100% !important;
+div[class*="recurrency-option"].active label,
+div[class*="recurrency-option"].active span,
+div[class*="recurrency-option"].selected label,
+div[class*="recurrency-option"].selected span,
+.dsf__recurrency-option--selected label {
+    color: white !important;
 }
 
 /* Montos Grid */
