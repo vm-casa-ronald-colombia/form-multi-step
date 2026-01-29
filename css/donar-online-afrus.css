@@ -118,79 +118,79 @@ button.active,
     color: white !important;
 }
 
-/* Layout de opciones - FRECUENCIA (Corregido) */
+/* Layout de opciones - FRECUENCIA (Simplificado y Robusto) */
+.donation-flow-step-recurring-period,
 div[class*="recurrency"] {
     display: flex !important;
-    gap: 12px !important;
     width: 100% !important;
-    justify-content: space-between !important;
+    gap: 12px !important;
+    margin-bottom: 20px !important;
     flex-direction: row !important;
 }
 
-/* Opciones individuales */
-div[class*="recurrency-option"],
-.dsf__recurrency-option {
-    position: relative !important;
+/* El contenedor de cada opción */
+.donation-flow-step-recurring-period-option,
+div[class*="recurrency-option"] {
     flex: 1 !important;
-    width: 50% !important;
+    position: relative !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    background: transparent !important;
+}
+
+/* Ocultar el Input Radio Nativo de forma segura */
+.donation-flow-step-recurring-period-option input,
+div[class*="recurrency-option"] input {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    border: 0 !important;
+    opacity: 0 !important;
+}
+
+/* Estilizar el Label QUE ES LO QUE VEMOS */
+.donation-flow-step-recurring-period-option label,
+div[class*="recurrency-option"] label {
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
-    padding: 12px !important;
-    border-radius: 12px !important;
-    border: 1px solid #d1d5db !important;
-    background-color: var(--color-white) !important;
-    cursor: pointer !important;
+    width: 100% !important;
     height: 48px !important;
-    text-align: center !important;
-}
-
-/* OCULTAR RADIO NATIVO (Causa de los óvalos feos) */
-div[class*="recurrency-option"] input[type="radio"],
-div[class*="recurrency-option"] input,
-.dsf__recurrency-option input {
-    position: absolute !important;
-    opacity: 0 !important;
-    width: 0 !important;
-    height: 0 !important;
     margin: 0 !important;
-    pointer-events: none !important;
-    appearance: none !important;
-    /* Standard property */
-    -webkit-appearance: none !important;
-}
-
-/* TEXTO DEL LABEL (Restaurar visibilidad) */
-div[class*="recurrency-option"] label,
-div[class*="recurrency-option"] span {
-    z-index: 2 !important;
+    padding: 0 !important;
+    background-color: white !important;
+    border: 1px solid #d1d5db !important;
+    border-radius: 12px !important;
     color: #4F73AC !important;
     font-weight: 700 !important;
     text-transform: uppercase !important;
+    cursor: pointer !important;
     font-size: 14px !important;
-    pointer-events: none !important;
-    /* Click pasa al contenedor */
-    display: block !important;
-    width: 100% !important;
-    text-align: center !important;
-    margin: 0 !important;
+    box-sizing: border-box !important;
 }
 
-/* ESTADO SELECCIONADO */
-div[class*="recurrency-option"].active,
-div[class*="recurrency-option"].selected,
-.dsf__recurrency-option--selected {
+/* Estado Activo / Checkeado */
+.donation-flow-step-recurring-period-option input:checked+label,
+div[class*="recurrency-option"] input:checked+label,
+.active label {
     background-color: #2B6CB0 !important;
+    color: white !important;
     border-color: #2B6CB0 !important;
     box-shadow: 0 4px 6px rgba(43, 108, 176, 0.2) !important;
 }
 
-div[class*="recurrency-option"].active label,
-div[class*="recurrency-option"].active span,
+/* A veces el 'active' se pone en el div padre */
+.active.donation-flow-step-recurring-period-option label,
 div[class*="recurrency-option"].selected label,
-div[class*="recurrency-option"].selected span,
-.dsf__recurrency-option--selected label {
+div[class*="recurrency-option"].active label {
+    background-color: #2B6CB0 !important;
     color: white !important;
+    border-color: #2B6CB0 !important;
 }
 
 /* Montos Grid */
