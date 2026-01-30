@@ -1,21 +1,24 @@
 :root {
-    /* PALETA "NUEVOS COLORES" - CREMA CÁLIDO & ROJO (v6) */
-    --color-red: #D52B1E;
-    /* Rojo McDonald's Standard */
-    --color-red-hover: #b91500;
+    /* PALETA OFICIAL (v6 - Enero 2026) */
+    --color-red: #db0007;
+    /* Rojo Oficial */
+    --color-red-hover: #b00006;
+    /* Un tono más oscuro para hover */
 
-    /* El "Crema/Naranja" del fondo */
-    --color-cream-bg: #FFF9E6;
-    /* Un crema amarillento cálido */
-    --color-beige-form: #FFF9E6;
-    /* Mismo tono para fundir la tarjeta */
+    /* El "Crema" del fondo */
+    --color-cream-bg: #fffde9;
+    --color-beige-form: #fffde9;
 
     --color-white: #FFFFFF;
     --color-black: #000000;
+    --color-yellow-brand: #ffbc0d;
+    /* Amarillo oficial (para acentos si necesario) */
+
     --color-dark-gray: #2C2C2C;
     --color-border: #E6DBB9;
     /* Borde crema oscuro */
-    --color-focus-ring: rgba(213, 43, 30, 0.2);
+    --color-focus-ring: rgba(219, 0, 7, 0.2);
+    /* Basado en el nuevo rojo */
 
     --main-color: var(--color-red);
     --font-base: 'Inter', system-ui, -apple-system, sans-serif;
