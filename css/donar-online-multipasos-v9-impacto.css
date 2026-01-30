@@ -1,0 +1,102 @@
+:root {
+    --color-red: #db0007;
+    --color-black: #000000;
+    --color-cream-bg: #fffde9;
+}
+
+body {
+    background-color: var(--color-cream-bg);
+    font-family: 'Inter', sans-serif;
+}
+
+.dsf {
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    /* BORDE NEGRO GRUESO - ESTILO FUERTE */
+    border: 3px solid #000;
+    background: #fff;
+    box-shadow: 8px 8px 0px #000;
+    /* Sombra sólida negra estilo 'Brutalist' */
+}
+
+/* TITULO GIGANTE */
+.dsf::before {
+    content: "TU AYUDA CAMBIA VIDAS.";
+    display: block;
+    font-size: 28px;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: #000;
+    line-height: 1;
+    margin-bottom: 30px;
+    letter-spacing: -1px;
+}
+
+.dsf__group label {
+    display: block !important;
+    font-weight: 800;
+    color: #000;
+    text-transform: uppercase;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.dsf__group input,
+select {
+    border: 2px solid #000;
+    background: #fff !important;
+    padding: 12px;
+    font-weight: 600;
+    color: #000;
+    font-size: 16px;
+    border-radius: 0px;
+    /* Bordes rectos */
+}
+
+.dsf__group input:focus {
+    background: #yellow !important;
+    outline: none;
+}
+
+/* BOTONES MONTO */
+.dsf__amount-option {
+    border: 2px solid #000;
+    background: #fff;
+    color: #000;
+    font-weight: 900;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 4px 4px 0px #000;
+    transition: all 0.1s;
+}
+
+.dsf__amount-option:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px #000;
+}
+
+.dsf__amount-option--selected {
+    background: var(--color-red) !important;
+    color: #fff !important;
+}
+
+/* CTA */
+.dsf__button-next {
+    width: 100%;
+    background: var(--color-red);
+    border: 3px solid #000;
+    padding: 20px;
+    font-size: 0 !important;
+    box-shadow: 6px 6px 0px #000;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.dsf__button-next::after {
+    content: "¡DONAR AHORA!";
+    color: #fff;
+    font-size: 20px;
+    font-weight: 900;
+    text-transform: uppercase;
+}

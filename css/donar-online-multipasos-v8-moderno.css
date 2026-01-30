@@ -1,0 +1,130 @@
+:root {
+    --color-red: #db0007;
+    --color-cream-bg: #FFFFFF;
+    /* FONDO BLANCO PURO */
+    --color-bg-gray: #F9FAFB;
+    /* Fondo gris muy suave para inputs */
+    --color-black: #111827;
+    --font-base: 'Inter', system-ui, -apple-system, sans-serif;
+    --radius-btn: 6px;
+    /* Botones más cuadrados, modernos */
+    --radius-input: 6px;
+}
+
+body {
+    background-color: var(--color-cream-bg);
+    font-family: var(--font-base);
+    color: var(--color-black);
+}
+
+.dsf {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 40px;
+    background: #fff;
+    /* Borde muy sutil moderno */
+    border: 1px solid #E5E7EB;
+    border-radius: 12px;
+}
+
+/* Titulo limpio */
+.dsf::before {
+    content: "Dona hoy y ayuda a una familia 🏠";
+    display: block;
+    font-size: 22px;
+    font-weight: 700;
+    color: #111;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* INPUTS MODERNOS (Fondo gris) */
+.dsf__group label {
+    display: block !important;
+    font-size: 13px;
+    font-weight: 500;
+    color: #4B5563;
+    /* Gris medio */
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.dsf__group input,
+.dsf__group select {
+    padding: 14px;
+    background-color: var(--color-bg-gray) !important;
+    /* Fondo grisaceo */
+    border: 1px solid transparent;
+    /* Sin borde por defecto */
+    border-radius: var(--radius-input);
+    color: #111;
+    width: 100%;
+    height: 50px;
+    font-size: 16px;
+    transition: all 0.2s;
+}
+
+.dsf__group input:focus {
+    background-color: #fff !important;
+    border-color: var(--color-red);
+    box-shadow: 0 0 0 4px rgba(219, 0, 7, 0.1);
+}
+
+/* BOTONES MONTO */
+.dsf__amount-option-list {
+    display: flex;
+    /* Flex para que llenen */
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+.dsf__amount-option {
+    flex: 1 1 30%;
+    /* 3 columnas */
+    padding: 14px 5px;
+    background: #fff;
+    border: 2px solid #E5E7EB;
+    /* Borde más grueso */
+    color: #374151;
+    font-weight: 700;
+    text-align: center;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.dsf__amount-option--selected {
+    background-color: #FEF2F2 !important;
+    /* Fondo rojo muy pálido */
+    color: var(--color-red) !important;
+    border-color: var(--color-red) !important;
+}
+
+/* CTA */
+.dsf__button-next {
+    width: 100%;
+    padding: 18px;
+    background-color: var(--color-red);
+    color: transparent !important;
+    font-size: 0 !important;
+    border: none;
+    border-radius: 6px;
+    /* Cuadradito moderno */
+    cursor: pointer;
+    font-weight: 600;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    position: relative;
+    margin-top: 15px;
+}
+
+.dsf__button-next::after {
+    content: "Continuar Donación ->";
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
