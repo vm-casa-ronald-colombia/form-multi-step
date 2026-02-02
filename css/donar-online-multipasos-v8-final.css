@@ -149,15 +149,16 @@ button[type="submit"] {
 }
 
 /* Texto NUEVO del botón */
+/* Texto NUEVO del botón */
 .dsf__button-next::after,
 button[type="submit"]::after {
     /* DEFAULT (Paso 1) */
-    content: "ENVIAR FORMULARIO";
+    content: "CONTINUAR CON MI APORTE";
 
-    font-size: 16px !important;
+    font-size: 15px !important;
     color: #fff !important;
     font-weight: 700 !important;
-    text-transform: uppercase;
+    text-transform: uppercase !important;
     letter-spacing: 0.5px;
     visibility: visible !important;
     opacity: 1 !important;
@@ -167,11 +168,16 @@ button[type="submit"]::after {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    width: 100%;
+    /* Asegura que ocupe ancho para centrar texto largo */
 }
 
-/* Override para Paso 2 (Tarjeta) */
-.dsf:has(.dsf__card-data) .dsf__button-next::after {
-    content: "DONAR AHORA ❤️";
+/* Override para Paso 2/3 (Tarjeta) */
+.dsf:has(.dsf__card-data) .dsf__button-next::after,
+.dsf:has(input[name="card_number"]) .dsf__button-next::after {
+    content: "DONAR AHORA!";
+    font-size: 18px !important;
+    /* Un poco más grande para el final */
 }
 
 .dsf__button-next:hover {
