@@ -186,10 +186,17 @@ button[type="submit"]::after {
     left: auto !important;
 }
 
-/* Override para Paso 2/3 (Tarjeta) */
+/* PASO 2: Datos de Contacto (Tiene email/nombre pero NO tarjeta aún) */
+.dsf:has(input[name="email"]) .dsf__button-next::after,
+.dsf:has(input[name="last_name"]) .dsf__button-next::after,
+.dsf:has(input[name="full_name"]) .dsf__button-next::after {
+    content: "CONTINUAR";
+}
+
+/* PASO 3: Pago (Tarjeta) - SOBRESCRIBE a Paso 2 */
 .dsf:has(.dsf__card-data) .dsf__button-next::after,
 .dsf:has(input[name="card_number"]) .dsf__button-next::after {
-    content: "DONAR AHORA!";
+    content: "DONAR AHORA";
     font-size: 20px !important;
 }
 
