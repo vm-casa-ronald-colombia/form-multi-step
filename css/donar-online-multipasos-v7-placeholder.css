@@ -62,91 +62,52 @@ body {
 }
 
 /* Label que parece placeholder */
+/* Label que parece placeholder - FIXED & FORCED */
 .dsf__group label {
     display: block !important;
-    position: absolute;
-    top: 16px;
-    left: 16px;
-    font-size: 15px;
-    color: #777;
-    /* Gris placeholder */
-    font-weight: 500;
-    pointer-events: none;
-    /* Click pasa al input */
-    transition: all 0.2s ease;
-    z-index: 10;
-    width: auto;
-    background: transparent;
+    position: absolute !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    left: 16px !important;
+    font-size: 15px !important;
+    color: #777 !important;
+    font-weight: 500 !important;
+    pointer-events: none !important;
+    z-index: 100 !important;
+    width: auto !important;
+    background: transparent !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    line-height: normal !important;
 }
 
 /* Ocultar label cuando el usuario escribe (focus) */
-/* Nota: Si el campo tiene texto y pierde foco, el label volverá a aparecer encima. 
-   Es una limitación CSS sin JS. Pero soluciona el "no se ve nada" inicial. */
 .dsf__group:focus-within label {
-    opacity: 0;
-    visibility: hidden;
+    opacity: 0 !important;
+    visibility: hidden !important;
 }
 
 .dsf__group input,
 .dsf__group select {
     padding: 12px 16px;
     background-color: var(--color-white) !important;
-    border: 1px solid #d1d1d1;
-    border-radius: var(--radius-input);
-    font-size: 15px;
+    border: 1px solid #d1d1d1 !important;
+    border-radius: var(--radius-input) !important;
+    font-size: 15px !important;
     width: 100%;
-    height: 52px;
+    height: 52px !important;
     box-shadow: var(--shadow-input);
-    color: var(--color-black);
+    color: var(--color-black) !important;
     position: relative;
     z-index: 5;
 }
 
-.dsf__group input::placeholder,
-.dsf__group select::placeholder {
-    opacity: 0;
-    /* Ocultamos placeholder nativo si existe para usar el label */
-}
-
-/* Focus state */
-.dsf__group input:focus,
-.dsf__group select:focus {
-    border-color: var(--color-red);
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(219, 0, 7, 0.15);
-}
-
-.dsf__amount-option-list {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    margin-bottom: 25px;
-}
-
-.dsf__amount-option {
-    padding: 12px;
-    background-color: var(--color-white);
-    border: 1px solid var(--color-border);
-    color: var(--color-black);
-    font-weight: 600;
-    border-radius: 8px;
-    text-align: center;
-    cursor: pointer;
-}
-
-.dsf__amount-option--selected {
-    background-color: var(--color-red) !important;
-    color: var(--color-white) !important;
-    border-color: var(--color-red) !important;
-}
-
 /* --- BOTONES --- */
 .dsf__button-next,
-/* Selector genérico para botones perdidos */
 button[type="submit"] {
     width: 100%;
     padding: 16px;
-    background-color: var(--color-red);
+    background-color: var(--color-red) !important;
     border: none;
     border-radius: var(--radius-btn);
     cursor: pointer;
@@ -154,26 +115,30 @@ button[type="submit"] {
     box-shadow: 0 4px 12px rgba(219, 0, 7, 0.3);
     margin-top: 20px;
 
-    /* TRUCO VISIBILIDAD: Ocultar texto original pero mantener caja */
+    /* TRUCO VISIBILIDAD AGRESIVO */
     color: transparent !important;
     font-size: 0 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
 }
 
-/* Pseudo-elemento para el TEXTO NUEVO */
 .dsf__button-next::after,
 button[type="submit"]::after {
-    color: #fff;
-    font-size: 16px;
-    font-weight: 700;
-    text-transform: uppercase;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    white-space: nowrap;
+    /* DEFAULT A LO SEGURO: Enviar Formulario */
+    content: "Enviar Formulario";
 
-    /* Texto por defecto si no matchea reglas abajo */
-    content: "Continuar";
+    color: #fff !important;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    white-space: nowrap !important;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
 /* TEXTO: PASO 1 (Montos) -> Enviar Formulario */
