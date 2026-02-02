@@ -55,10 +55,36 @@ body {
 
 
 
-/* --- ESTILO PLACEHOLDER (Etiquetas Ocultas) --- */
+/* --- ESTILO PLACEHOLDER SIMULADO (Labels adentro) --- */
+.dsf__group {
+    position: relative;
+    /* Necesario para posicionar labels */
+}
+
+/* Label que parece placeholder */
 .dsf__group label {
-    display: none !important;
-    /* Oculta la etiqueta de arriba */
+    display: block !important;
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    font-size: 15px;
+    color: #777;
+    /* Gris placeholder */
+    font-weight: 500;
+    pointer-events: none;
+    /* Click pasa al input */
+    transition: all 0.2s ease;
+    z-index: 10;
+    width: auto;
+    background: transparent;
+}
+
+/* Ocultar label cuando el usuario escribe (focus) */
+/* Nota: Si el campo tiene texto y pierde foco, el label volverá a aparecer encima. 
+   Es una limitación CSS sin JS. Pero soluciona el "no se ve nada" inicial. */
+.dsf__group:focus-within label {
+    opacity: 0;
+    visibility: hidden;
 }
 
 .dsf__group input,
@@ -72,15 +98,17 @@ body {
     height: 52px;
     box-shadow: var(--shadow-input);
     color: var(--color-black);
+    position: relative;
+    z-index: 5;
 }
 
 .dsf__group input::placeholder,
 .dsf__group select::placeholder {
-    color: #666;
-    font-weight: 500;
-    opacity: 1;
+    opacity: 0;
+    /* Ocultamos placeholder nativo si existe para usar el label */
 }
 
+/* Focus state */
 .dsf__group input:focus,
 .dsf__group select:focus {
     border-color: var(--color-red);
@@ -112,23 +140,28 @@ body {
     border-color: var(--color-red) !important;
 }
 
-.dsf__button-next {
+/* --- BOTONES --- */
+.dsf__button-next,
+/* Selector genérico para botones perdidos */
+button[type="submit"] {
     width: 100%;
     padding: 16px;
     background-color: var(--color-red);
-    color: transparent !important;
-    font-size: 0 !important;
     border: none;
     border-radius: var(--radius-btn);
     cursor: pointer;
     position: relative;
     box-shadow: 0 4px 12px rgba(219, 0, 7, 0.3);
     margin-top: 20px;
+
+    /* TRUCO VISIBILIDAD: Ocultar texto original pero mantener caja */
+    color: transparent !important;
+    font-size: 0 !important;
 }
 
-.dsf__button-next::after {
-    /* TEXTO ACTUALIZADO: Enviar Formulario */
-    content: "Enviar Formulario";
+/* Pseudo-elemento para el TEXTO NUEVO */
+.dsf__button-next::after,
+button[type="submit"]::after {
     color: #fff;
     font-size: 16px;
     font-weight: 700;
@@ -137,6 +170,27 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    white-space: nowrap;
+
+    /* Texto por defecto si no matchea reglas abajo */
+    content: "Continuar";
+}
+
+/* TEXTO: PASO 1 (Montos) -> Enviar Formulario */
+.dsf:has(.dsf__amount-option-list) .dsf__button-next::after {
+    content: "Enviar Formulario";
+}
+
+/* TEXTO: PASO 2 (Tarjeta/Datos) -> Donar Ahora */
+.dsf:has(.dsf__card-data) .dsf__button-next::after,
+.dsf:has(input[name="card_number"]) .dsf__button-next::after {
+    content: "Donar Ahora ❤️";
+}
+
+.dsf__button-next:hover,
+button[type="submit"]:hover {
+    background-color: var(--color-red-hover);
+    transform: translateY(-2px);
 }
 
 .dsf__button-next:hover {
