@@ -1,0 +1,180 @@
+:root {
+    --color-red: #db0007;
+    --color-red-hover: #b00006;
+    --color-cream-bg: #fffde9;
+    --color-white: #FFFFFF;
+    --color-black: #000000;
+    --color-border: #E6DBB9;
+    --font-base: 'Inter', system-ui, sans-serif;
+    --radius-btn: 30px;
+    --radius-card: 16px;
+    --radius-input: 8px;
+    --shadow-input: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+body {
+    background-color: var(--color-cream-bg);
+    margin: 0;
+    font-family: var(--font-base);
+    color: var(--color-black);
+}
+
+.dsf {
+    width: 100%;
+    max-width: 460px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: var(--color-cream-bg);
+    border-radius: var(--radius-card);
+    box-sizing: border-box;
+}
+
+/* === ENCABEZADO FIJO (Aprobado) === */
+.dsf::before {
+    content: "Título Principal de la Campaña Aquí\A Lorem ipsum dolor sit amet, consectetur adipiscing elit.\A Ut elit tellus, luctus nec ullamcorper mattis, pulvinar.";
+    white-space: pre-wrap;
+    display: block;
+
+    font-size: 24px;
+    line-height: 1.3;
+    font-weight: 800;
+    color: var(--color-red);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* === PLACEHOLDERS "REALES" (Labels Absolutos) === */
+.dsf__group {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.dsf__group label {
+    display: block !important;
+    position: absolute;
+    top: 18px;
+    /* Ajuste visual exacto */
+    left: 16px;
+    font-size: 15px;
+    color: #888;
+    pointer-events: none;
+    /* Clave: el click pasa al input */
+    transition: all 0.2s ease;
+    z-index: 5;
+    background: transparent;
+    line-height: 1;
+}
+
+/* Ocultar label al escribir */
+.dsf__group:focus-within label {
+    opacity: 0;
+    transform: translateX(10px);
+    /* Pequeña animación de salida */
+}
+
+.dsf__group input,
+.dsf__group select {
+    box-sizing: border-box;
+    /* Vital */
+    padding: 12px 16px;
+    background-color: var(--color-white) !important;
+    border: 1px solid #d1d1d1;
+    border-radius: var(--radius-input);
+    font-size: 15px;
+    width: 100%;
+    height: 52px;
+    box-shadow: var(--shadow-input);
+    color: var(--color-black);
+
+    /* Asegurar que el input esté al fondo */
+    position: relative;
+    z-index: 1;
+}
+
+/* Matar placeholder nativo */
+.dsf__group input::placeholder {
+    color: transparent !important;
+    opacity: 0;
+}
+
+.dsf__group input:focus {
+    border-color: var(--color-red);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(219, 0, 7, 0.15);
+}
+
+/* === SELECCION DE MONTO === */
+.dsf__amount-option-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.dsf__amount-option {
+    padding: 12px;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    color: var(--color-black);
+    font-weight: 600;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.dsf__amount-option--selected {
+    background-color: var(--color-red) !important;
+    color: var(--color-white) !important;
+    border-color: var(--color-red) !important;
+}
+
+/* === BOTÓN PRIMARIO (Saturado) === */
+.dsf__button-next,
+button[type="submit"] {
+    display: block;
+    width: 100%;
+    border: none;
+    background: var(--color-red);
+    border-radius: var(--radius-btn);
+    padding: 16px;
+    margin-top: 20px;
+    cursor: pointer;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(219, 0, 7, 0.3);
+
+    /* Ocultar texto original */
+    font-size: 0 !important;
+    color: transparent !important;
+    position: relative;
+}
+
+/* Texto NUEVO del botón */
+.dsf__button-next::after,
+button[type="submit"]::after {
+    /* DEFAULT (Paso 1) */
+    content: "ENVIAR FORMULARIO";
+
+    font-size: 16px !important;
+    color: #fff !important;
+    font-weight: 700 !important;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    visibility: visible !important;
+    opacity: 1 !important;
+
+    /* Centrado absoluto dentro del botón relative */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Override para Paso 2 (Tarjeta) */
+.dsf:has(.dsf__card-data) .dsf__button-next::after {
+    content: "DONAR AHORA ❤️";
+}
+
+.dsf__button-next:hover {
+    background-color: var(--color-red-hover);
+    transform: translateY(-2px);
+}
