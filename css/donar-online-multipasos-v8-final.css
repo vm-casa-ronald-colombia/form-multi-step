@@ -53,7 +53,8 @@ body {
     left: auto !important;
     margin-bottom: 6px;
     font-size: 14px !important;
-    color: #444 !important;
+    color: transparent !important;
+    /* Invisible pero ocupa espacio */
     pointer-events: auto !important;
     z-index: 1;
     background: transparent !important;
