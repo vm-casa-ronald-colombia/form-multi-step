@@ -129,27 +129,39 @@ body {
     border-color: var(--color-red) !important;
 }
 
+/* === CONTENEDOR DE BOTONES (Volver arriba + Siguiente abajo) === */
+.dsf__buttons-container {
+    display: flex !important;
+    flex-direction: column-reverse !important;
+    gap: 15px !important;
+    width: 100% !important;
+}
+
 /* === BOTÓN PRIMARIO (Saturado) === */
 .dsf__button-next,
 button[type="submit"] {
-    display: block;
-    width: 100%;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
     border: none;
     background: var(--color-red);
     border-radius: var(--radius-btn);
-    padding: 16px;
-    margin-top: 20px;
+    padding: 14px 10px !important;
     cursor: pointer;
-    text-align: center;
     box-shadow: 0 4px 12px rgba(219, 0, 7, 0.3);
+
+    /* Configuración de Altura y Texto */
+    min-height: 50px !important;
+    height: auto !important;
+    margin-top: 0 !important;
 
     /* Ocultar texto original */
     font-size: 0 !important;
     color: transparent !important;
-    position: relative;
 }
 
-/* Texto NUEVO del botón */
+/* Texto NUEVO del botón (Usando estático para permitir multilínea) */
 .dsf__button-next::after,
 button[type="submit"]::after {
     /* DEFAULT (Paso 1) */
@@ -157,30 +169,50 @@ button[type="submit"]::after {
 
     font-size: 15px !important;
     color: #fff !important;
-    font-weight: 700 !important;
+    font-weight: 800 !important;
     text-transform: uppercase !important;
     letter-spacing: 0.5px;
+    line-height: 1.2 !important;
     visibility: visible !important;
     opacity: 1 !important;
 
-    /* Centrado absoluto dentro del botón relative */
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    /* Asegura que ocupe ancho para centrar texto largo */
+    /* Posicionamiento relativo al flujo flex */
+    position: relative !important;
+    white-space: normal !important;
+    text-align: center !important;
+    width: 100% !important;
+    transform: none !important;
+    top: auto !important;
+    left: auto !important;
 }
 
 /* Override para Paso 2/3 (Tarjeta) */
 .dsf:has(.dsf__card-data) .dsf__button-next::after,
 .dsf:has(input[name="card_number"]) .dsf__button-next::after {
     content: "DONAR AHORA!";
-    font-size: 18px !important;
-    /* Un poco más grande para el final */
+    font-size: 20px !important;
 }
 
 .dsf__button-next:hover {
     background-color: var(--color-red-hover);
     transform: translateY(-2px);
+}
+
+/* === BOTÓN VOLVER (Ahora Arriba) === */
+.dsf__button-prev {
+    background: transparent !important;
+    border: none !important;
+    color: #999 !important;
+    text-decoration: underline;
+    font-size: 13px !important;
+    padding: 5px !important;
+    margin: 0 !important;
+    cursor: pointer;
+    text-align: center !important;
+    width: 100% !important;
+    transition: color 0.2s;
+}
+
+.dsf__button-prev:hover {
+    color: var(--color-black) !important;
 }
