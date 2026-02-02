@@ -31,17 +31,10 @@ body {
 }
 
 /* === ENCABEZADO FIJO (Aprobado) === */
+/* === ENCABEZADO FIJO (Eliminado por solicitud) === */
 .dsf::before {
-    content: "Título Principal de la Campaña Aquí\A Lorem ipsum dolor sit amet, consectetur adipiscing elit.\A Ut elit tellus, luctus nec ullamcorper mattis, pulvinar.";
-    white-space: pre-wrap;
-    display: block;
-
-    font-size: 24px;
-    line-height: 1.3;
-    font-weight: 800;
-    color: var(--color-red);
-    text-align: center;
-    margin-bottom: 20px;
+    content: none !important;
+    display: none !important;
 }
 
 /* === PLACEHOLDERS "REALES" (Labels Absolutos) === */
@@ -66,17 +59,24 @@ body {
     line-height: 1;
 }
 
-/* Ocultar label al escribir */
-.dsf__group:focus-within label {
-    opacity: 0;
+/* Ocultar label al escribir O si ya tiene texto (FIX SUPERPOSICION) */
+.dsf__group:focus-within label,
+.dsf__group:has(input:valid) label,
+/* Campos requeridos llenos */
+.dsf__group:has(select:valid) label,
+/* Selects con valor */
+.dsf__group:has(input:not(:placeholder-shown)) label
+
+/* Inputs con algo escrito */
+    {
+    opacity: 0 !important;
+    visibility: hidden !important;
     transform: translateX(10px);
-    /* Pequeña animación de salida */
 }
 
 .dsf__group input,
 .dsf__group select {
     box-sizing: border-box;
-    /* Vital */
     padding: 12px 16px;
     background-color: var(--color-white) !important;
     border: 1px solid #d1d1d1;
