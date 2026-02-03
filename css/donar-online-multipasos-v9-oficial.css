@@ -69,7 +69,8 @@ body {
 /* === ETIQUETAS Y INPUTS === */
 .dsf__group {
     position: relative;
-    margin-bottom: 15px;
+    margin-bottom: 8px;
+    /* Más pegadito */
     display: flex;
     flex-direction: column;
 }
@@ -79,14 +80,17 @@ body {
     position: relative !important;
     top: auto !important;
     left: auto !important;
-    margin-bottom: 6px;
-    font-size: 14px !important;
+    margin-bottom: 0 !important;
+    /* Sin espacio */
+    font-size: 1px !important;
+    /* Prácticamente invisible */
+    line-height: 1px !important;
     color: transparent !important;
-    /* Invisible pero ocupando espacio */
-    pointer-events: auto !important;
+    pointer-events: none !important;
     z-index: 1;
     background: transparent !important;
-    line-height: normal;
+    height: 1px !important;
+    overflow: hidden !important;
 }
 
 .dsf__group input,
