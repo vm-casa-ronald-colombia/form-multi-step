@@ -1,0 +1,13 @@
+/* CSS para quitar SOLAMENTE el fondo gris de la pagina */
+body,
+html {
+    background-color: transparent !important;
+    background: transparent !important;
+}
+
+/* Opcional: Si el contenedor principal tiene fondo */
+.public-body,
+.wrapper {
+    background-color: transparent !important;
+    background: transparent !important;
+}
