@@ -42,7 +42,7 @@ body {
 /* === TÍTULO DINÁMICO POR PASO === */
 .dsf::before {
     display: block !important;
-    content: "¿CUÁNTO QUIERES DONAR?";
+    content: "¿CON CUÁNTO QUIERES APOYARNOS?";
     /* Default Paso 1 */
     font-size: 20px !important;
     font-weight: 800 !important;
@@ -60,13 +60,13 @@ body {
 /* Título Paso 2: Tus Datos (Detectado por campo email) */
 .dsf:has(input[name="email"])::before,
 .dsf:has(input[name="last_name"])::before {
-    content: "TUS DATOS DE CONTACTO";
+    content: "QUEREMOS CONOCER UN POCO MÁS DE TI";
 }
 
 /* Título Paso 3: Medio de Pago (Detectado por tarjeta) */
 .dsf:has(.dsf__card-data)::before,
 .dsf:has(input[name="card_number"])::before {
-    content: "SELECCIONA TU MEDIO DE PAGO";
+    content: "¡ESTÁS A UN PASO DE APOYAR A UNA FAMILIA!";
 }
 
 /* === ETIQUETAS Y INPUTS === */
