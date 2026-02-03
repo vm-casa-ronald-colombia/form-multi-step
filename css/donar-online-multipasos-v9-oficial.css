@@ -55,15 +55,14 @@ body {
     width: 100%;
 }
 
-/* Título Paso 2: Tus Datos (Detectado por campo email) */
-.dsf:has(input[name="email"])::before,
-.dsf:has(input[name="last_name"])::before {
+/* Título Paso 2: Datos del Donante (Detectado por contenedor .dsf__donor) */
+.dsf:has(.dsf__donor)::before {
     content: "Queremos conocerte, cuéntanos un poco de ti 📝";
 }
 
-/* Título Paso 3: Medio de Pago (Detectado por tarjeta) */
-.dsf:has(.dsf__card-data)::before,
-.dsf:has(input[name="card_number"])::before {
+/* Título Paso 3: Medio de Pago (Detectado por contenedor .dsf__payment o .dsf__card-data) */
+.dsf:has(.dsf__payment)::before,
+.dsf:has(.dsf__card-data)::before {
     content: "¡Ya estás a un solo paso de ayudar a una familia! ❤️";
 }
 
@@ -208,16 +207,14 @@ button[type="submit"]::after {
     left: auto !important;
 }
 
-/* PASO 2: Datos de Contacto */
-.dsf:has(input[name="email"]) .dsf__button-next::after,
-.dsf:has(input[name="last_name"]) .dsf__button-next::after,
-.dsf:has(input[name="full_name"]) .dsf__button-next::after {
+/* PASO 2: Datos de Contacto (Detectado por .dsf__donor) */
+.dsf:has(.dsf__donor) .dsf__button-next::after {
     content: "CONTINUAR";
 }
 
-/* PASO 3: Pago (Tarjeta) */
-.dsf:has(.dsf__card-data) .dsf__button-next::after,
-.dsf:has(input[name="card_number"]) .dsf__button-next::after {
+/* PASO 3: Pago (Detectado por .dsf__payment o .dsf__card-data) */
+.dsf:has(.dsf__payment) .dsf__button-next::after,
+.dsf:has(.dsf__card-data) .dsf__button-next::after {
     content: "DONAR AHORA";
     font-size: 20px !important;
 }
