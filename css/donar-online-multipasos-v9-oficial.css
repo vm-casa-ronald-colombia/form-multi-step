@@ -35,8 +35,8 @@ body {
     box-shadow: none !important;
     border: none !important;
     position: relative;
-    padding-top: 60px !important;
-    /* Espacio para el Título Dinámico */
+    padding-top: 100px !important;
+    /* Más espacio para título largo */
 }
 
 /* === TÍTULO DINÁMICO POR PASO === */
