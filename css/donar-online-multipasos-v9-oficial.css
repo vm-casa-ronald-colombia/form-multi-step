@@ -39,34 +39,21 @@ body {
     /* Espacio para el Título Dinámico */
 }
 
-/* === TÍTULO DINÁMICO POR PASO === */
+/* === TÍTULO FIJO EMOCIONAL === */
 .dsf::before {
     display: block !important;
-    content: "¿CON CUÁNTO QUIERES APOYARNOS?";
-    /* Default Paso 1 */
+    content: "Hoy puedes hacer que una familia esté cerca a su hijo mientras recibe tratamiento médico ❤️";
     font-size: 20px !important;
     font-weight: 800 !important;
     text-align: center !important;
-    color: var(--color-blue) !important;
-    text-transform: uppercase !important;
+    color: var(--color-red) !important;
+    /* Rojo Ronald Emocional */
+    line-height: 1.3 !important;
     margin-bottom: 25px !important;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    line-height: 1.2;
-}
-
-/* Título Paso 2: Tus Datos (Detectado por campo email) */
-.dsf:has(input[name="email"])::before,
-.dsf:has(input[name="last_name"])::before {
-    content: "QUEREMOS CONOCER UN POCO MÁS DE TI";
-}
-
-/* Título Paso 3: Medio de Pago (Detectado por tarjeta) */
-.dsf:has(.dsf__card-data)::before,
-.dsf:has(input[name="card_number"])::before {
-    content: "¡ESTÁS A UN PASO DE APOYAR A UNA FAMILIA!";
 }
 
 /* === ETIQUETAS Y INPUTS === */
