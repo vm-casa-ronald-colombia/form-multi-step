@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 :root {
     --color-red: #DA1A00;
     /* Rojo Ronald McDonald */
@@ -20,9 +22,7 @@
 
 body {
     background-color: #ffffff !important;
-    /* Fondo transparente por defecto */
     font-family: 'Inter', sans-serif !important;
-    /* Tipografía moderna */
 }
 
 /* === CONTENEDOR PRINCIPAL === */
@@ -36,7 +36,6 @@ body {
     border: none !important;
     position: relative;
     padding-top: 100px !important;
-    /* Más espacio para título largo */
 }
 
 /* === TÍTULO DINÁMICO POR PASO === */
@@ -55,12 +54,12 @@ body {
     width: 100%;
 }
 
-/* Título Paso 2: Datos del Donante (Detectado por contenedor .dsf__donor) */
+/* Título Paso 2 */
 .dsf:has(.dsf__donor)::before {
     content: "Queremos conocerte, cuéntanos un poco de ti 📝";
 }
 
-/* Título Paso 3: Medio de Pago (Detectado por contenedor .dsf__payment o .dsf__card-data) */
+/* Título Paso 3 */
 .dsf:has(.dsf__payment)::before,
 .dsf:has(.dsf__card-data)::before {
     content: "¡Ya estás a un solo paso de ayudar a una familia! ❤️";
@@ -70,7 +69,6 @@ body {
 .dsf__group {
     position: relative;
     margin-bottom: 8px;
-    /* Más pegadito */
     display: flex;
     flex-direction: column;
 }
@@ -81,9 +79,7 @@ body {
     top: auto !important;
     left: auto !important;
     margin-bottom: 0 !important;
-    /* Sin espacio */
     font-size: 1px !important;
-    /* Prácticamente invisible */
     line-height: 1px !important;
     color: transparent !important;
     pointer-events: none !important;
@@ -109,11 +105,9 @@ body {
     z-index: 1;
 }
 
-/* PLACEHOLDERS NATIVOS VISIBLES */
 .dsf__group input::placeholder,
 .dsf__group select::placeholder {
     color: #999 !important;
-    /* Gris suave legible */
     opacity: 1 !important;
 }
 
@@ -154,7 +148,7 @@ body {
     border-color: var(--color-red);
 }
 
-/* === CONTENEDOR DE BOTONES (Volver arriba + Siguiente abajo) === */
+/* === CONTENEDOR DE BOTONES === */
 .dsf__buttons-container {
     display: flex !important;
     flex-direction: column-reverse !important;
@@ -175,13 +169,9 @@ button[type="submit"] {
     padding: 14px 10px !important;
     cursor: pointer;
     box-shadow: 0 4px 12px rgba(219, 0, 7, 0.3);
-
-    /* Configuración de Altura y Texto */
     min-height: 50px !important;
     height: auto !important;
     margin-top: 0 !important;
-
-    /* Ocultar texto original */
     font-size: 0 !important;
     color: transparent !important;
 }
@@ -189,9 +179,7 @@ button[type="submit"] {
 /* TEXTO DINÁMICO DEL BOTÓN */
 .dsf__button-next::after,
 button[type="submit"]::after {
-    /* DEFAULT (Paso 1) */
     content: "CONTINUAR CON MI APORTE";
-
     font-size: 15px !important;
     color: #fff !important;
     font-weight: 800 !important;
@@ -200,8 +188,6 @@ button[type="submit"]::after {
     line-height: 1.2 !important;
     visibility: visible !important;
     opacity: 1 !important;
-
-    /* Posicionamiento relativo al flujo flex */
     position: relative !important;
     white-space: normal !important;
     text-align: center !important;
@@ -211,12 +197,10 @@ button[type="submit"]::after {
     left: auto !important;
 }
 
-/* PASO 2: Datos de Contacto (Detectado por .dsf__donor) */
 .dsf:has(.dsf__donor) .dsf__button-next::after {
     content: "CONTINUAR";
 }
 
-/* PASO 3: Pago (Detectado por .dsf__payment o .dsf__card-data) */
 .dsf:has(.dsf__payment) .dsf__button-next::after,
 .dsf:has(.dsf__card-data) .dsf__button-next::after {
     content: "DONAR AHORA";
@@ -228,7 +212,7 @@ button[type="submit"]::after {
     transform: translateY(-2px);
 }
 
-/* === BOTÓN VOLVER (Arriba) === */
+/* === BOTÓN VOLVER === */
 .dsf__button-prev {
     background: transparent !important;
     border: none !important;
@@ -247,7 +231,6 @@ button[type="submit"]::after {
     color: var(--color-black) !important;
 }
 
-/* Ocultar mensaje seguridad genérico si estorba */
 .dsf__security-message {
     display: none !important;
 }
