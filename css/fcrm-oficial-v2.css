@@ -30,16 +30,16 @@ body {
     width: 100% !important;
     max-width: 420px !important;
     margin: 0 auto !important;
-    padding: 40px 30px !important;
-    /* Más aire interno */
+    padding: 25px 15px !important;
+    /* Padding solicitado: 25px arriba/abajo, 15px lados */
+    padding-top: 125px !important;
+    /* Ajuste para que el título absoluto no tape los campos (100px título + 25px libres) */
     background: transparent !important;
     /* TRANSPARENCIA TOTAL */
     border-radius: 12px !important;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1) !important;
     border: none !important;
     position: relative;
-    padding-top: 125px !important;
-    /* Más espacio para título largo + 25px extra */
 }
 
 /* === TÍTULO DINÁMICO POR PASO === */
