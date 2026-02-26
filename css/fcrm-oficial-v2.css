@@ -37,9 +37,25 @@ body {
     background: transparent !important;
     /* TRANSPARENCIA TOTAL */
     border-radius: 12px !important;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1) !important;
+    box-shadow: none !important;
+    /* QUITANDO SOMBREADO SOLICITADO */
     border: none !important;
     position: relative;
+}
+
+/* Fix específico para que el teléfono NO se vea rojo (clases de Donar Online) */
+input[type="tel"],
+#phone_76576,
+input.required.border-red-600 {
+    border: 1px solid #ced4da !important;
+    background-color: #ffffff !important;
+    color: #495057 !important;
+}
+
+input[type="tel"]:focus,
+#phone_76576:focus {
+    border-color: var(--color-blue) !important;
+    box-shadow: 0 0 0 0.2rem rgba(39, 52, 139, 0.25) !important;
 }
 
 /* === TÍTULO DINÁMICO POR PASO === */
