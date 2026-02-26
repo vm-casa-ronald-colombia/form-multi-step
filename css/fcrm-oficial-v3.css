@@ -238,29 +238,33 @@ button[type="submit"]::after {
 .donor-phone-number,
 .dsf__group:has(input[type="tel"]),
 .dsf__group:has(input[name*="phone"]),
+.dsf__group:has(input[name*="telefono"]),
 .dsf__group:has(.form-control[type="tel"]),
-[class*="phone"] {
+[class*="phone"],
+[class*="telefono"] {
     grid-column: span 2 / span 2 !important;
     width: 100% !important;
     display: flex !important;
     flex-direction: column !important;
     visibility: visible !important;
     opacity: 1 !important;
-    min-height: 40px !important;
+    min-height: 48px !important;
 }
 
 /* Ajuste para que los inputs de teléfono se vean bien */
 .dsf__group:has(input[type="tel"]),
-.dsf__group:has(input[name*="phone"]) {
+.dsf__group:has(input[name*="phone"]),
+.dsf__group:has(input[name*="telefono"]) {
     display: flex !important;
     flex-direction: column !important;
     position: relative !important;
 }
 
-/* Forzar etiqueta visual de "Teléfono" ya que no tienen placeholder */
+/* Forzar etiqueta visual de "Número de Teléfono" */
 .dsf__group:has(input[type="tel"])::before,
-.dsf__group:has(input[name*="phone"])::before {
-    content: "Teléfono / Móvil" !important;
+.dsf__group:has(input[name*="phone"])::before,
+.dsf__group:has(input[name*="telefono"])::before {
+    content: "Número de Teléfono" !important;
     position: absolute !important;
     top: 15px !important;
     left: 16px !important;
@@ -270,9 +274,10 @@ button[type="submit"]::after {
     z-index: 2 !important;
 }
 
-/* Ocultar el texto forzado si se escribe algo (si el browser lo soporta) */
+/* Ocultar el texto forzado si se escribe algo */
 .dsf__group:has(input[type="tel"]:not(:placeholder-shown))::before,
-.dsf__group:has(input[name*="phone"]:not(:placeholder-shown))::before {
+.dsf__group:has(input[name*="phone"]:not(:placeholder-shown))::before,
+.dsf__group:has(input[name*="telefono"]:not(:placeholder-shown))::before {
     display: none !important;
 }
 
