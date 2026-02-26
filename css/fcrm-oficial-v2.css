@@ -32,8 +32,8 @@ body {
     margin: 0 auto !important;
     padding: 20px 15px !important;
     /* Padding equilibrado */
-    padding-top: 120px !important;
-    /* Espacio para título (100px) + margen (20px) */
+    padding-top: 95px !important;
+    /* Reducido de 120px para juntar el título más al form */
     background: transparent !important;
     /* TRANSPARENCIA TOTAL */
     border-radius: 12px !important;
@@ -69,7 +69,8 @@ form.dsf::before {
     text-align: center !important;
     color: var(--color-red) !important;
     line-height: 1.3 !important;
-    margin-bottom: 25px !important;
+    margin-bottom: 15px !important;
+    /* Reducido de 25px */
     position: absolute !important;
     top: 0 !important;
     left: 0 !important;
