@@ -23,6 +23,11 @@ body {
     /* Fondo transparente por defecto */
     font-family: 'Inter', sans-serif !important;
     /* Tipografía moderna */
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    min-height: 100vh !important;
+    margin: 0 !important;
 }
 
 /* === CONTENEDOR PRINCIPAL === */
