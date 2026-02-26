@@ -124,20 +124,60 @@ input[type="tel"]:focus,
     transform: translateY(-50%) !important;
     z-index: 10 !important;
     pointer-events: none !important;
-    /* Ocultar texto original y poner el nuevo */
-    display: flex !important;
-    font-size: 0 !important;
+    display: block !important;
+    /* Cambiado de flex para evitar líneas raras */
+    line-height: normal !important;
 }
 
-.dsf__group:has([id*="phone"]) label::after {
+.dsf__group:has([id*="phone"]) label::before {
     content: "Número de WhatsApp (ej: +57 300 123 4567)";
     font-size: 14px !important;
     color: #999 !important;
 }
 
-/* Ocultar placeholder simulado cuando hay foco o texto */
-.dsf__group:has([id*="phone"] input:focus) label,
-.dsf__group:has([id*="phone"] input:not([value=""])) label {
+/* Ocultar texto original del label de teléfono */
+.dsf__group:has([id*="phone"]) label {
+    font-size: 0 !important;
+}
+
+/* PLACEHOLDER SIMULADO PARA NÚMERO DE ID */
+.dsf__group:has(input[id*="textfield"]) label {
+    font-size: 14px !important;
+    color: #999 !important;
+    visibility: visible !important;
+    height: auto !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 16px !important;
+    transform: translateY(-50%) !important;
+    z-index: 10 !important;
+    pointer-events: none !important;
+    display: block !important;
+    line-height: normal !important;
+}
+
+.dsf__group:has(input[id*="textfield"]) label::before {
+    content: "Número de ID";
+    font-size: 14px !important;
+    color: #999 !important;
+}
+
+/* Ocultar texto original del label de ID */
+.dsf__group:has(input[id*="textfield"]) label {
+    font-size: 0 !important;
+}
+
+/* Ocultar placeholder simulado cuando el input tiene foco o contenido */
+.dsf__group:has(input:focus) label,
+.dsf__group:has(input:not(:placeholder-shown)) label {
+    display: none !important;
+}
+
+/* Ocultar mensajes de error rojos que desajustan el diseño */
+.dsf__error-message,
+span.text-red-600,
+p.text-red-500,
+div.invalid-feedback {
     display: none !important;
 }
 
