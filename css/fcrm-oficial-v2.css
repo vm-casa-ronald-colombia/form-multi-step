@@ -30,15 +30,15 @@ body {
     width: 100% !important;
     max-width: 420px !important;
     margin: 0 auto !important;
-    padding: 25px 15px !important;
-    /* Padding solicitado: 25px abajo, 15px lados */
-    padding-top: 110px !important;
-    /* Ajuste solicitado: 100px título + 10px libres (antes 25px) */
+    padding: 20px 15px !important;
+    /* Padding equilibrado */
+    padding-top: 120px !important;
+    /* Espacio para título (100px) + margen (20px) */
     background: transparent !important;
     /* TRANSPARENCIA TOTAL */
     border-radius: 12px !important;
     box-shadow: none !important;
-    /* QUITANDO SOMBREADO SOLICITADO */
+    /* SIN SOMBRAS */
     border: none !important;
     position: relative;
 }
@@ -94,21 +94,24 @@ input[type="tel"]:focus,
     flex-direction: column;
 }
 
-/* Ocultar labels por defecto para usarlos como placeholder o esconderlos */
+/* ETIQUETAS VISIBLES Y PROFESIONALES */
 .dsf__group label {
     display: block !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    color: var(--color-blue) !important;
+    /* Azul Ronald para contraste */
+    margin-bottom: 5px !important;
+    text-transform: none !important;
+    letter-spacing: normal !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    height: auto !important;
     position: relative !important;
-    top: auto !important;
-    left: auto !important;
-    margin-bottom: 0 !important;
-    font-size: 1px !important;
-    line-height: 1px !important;
-    color: transparent !important;
-    pointer-events: none !important;
-    z-index: 1;
-    background: transparent !important;
-    height: 1px !important;
-    overflow: hidden !important;
+    transform: none !important;
+    left: 0 !important;
+    top: 0 !important;
+    pointer-events: auto !important;
 }
 
 /* PLACEHOLDER SIMULADO PARA TELÉFONO (WhatsApp) */
