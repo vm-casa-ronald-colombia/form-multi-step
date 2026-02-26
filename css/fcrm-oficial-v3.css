@@ -19,8 +19,8 @@
 }
 
 body {
-    background-color: #ffffff !important;
-    /* FONDO BLANCO TOTAL PARA EVITAR TRANSPARENCIAS */
+    background-color: transparent !important;
+    /* TRANSPARENTE A PETICIÓN DEL USUARIO */
     font-family: 'Inter', sans-serif !important;
     /* Tipografía moderna */
     margin: 0;
@@ -34,10 +34,11 @@ body {
     margin: 20px auto !important;
     padding: 40px 30px !important;
     /* Más aire interno */
-    background: #ffffff !important;
-    /* FONDO BLANCO SÓLIDO */
+    background: transparent !important;
+    /* TRANSPARENTE A PETICIÓN DEL USUARIO */
     border-radius: 12px !important;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1) !important;
+    box-shadow: none !important;
+    /* Sin sombra si es transparente */
     border: none !important;
     position: relative;
     padding-top: 100px !important;
@@ -237,9 +238,15 @@ button[type="submit"]::after {
 .donor-phone-number,
 .dsf__group:has(input[type="tel"]),
 .dsf__group:has(input[name*="phone"]),
+.dsf__group:has(.form-control[type="tel"]),
 [class*="phone"] {
     grid-column: span 2 / span 2 !important;
     width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    min-height: 40px !important;
 }
 
 /* Ajuste para que los inputs de teléfono se vean bien */
