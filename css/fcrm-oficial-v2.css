@@ -38,8 +38,8 @@ body {
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1) !important;
     border: none !important;
     position: relative;
-    padding-top: 100px !important;
-    /* Más espacio para título largo */
+    padding-top: 125px !important;
+    /* Más espacio para título largo + 25px extra */
 }
 
 /* === TÍTULO DINÁMICO POR PASO === */
