@@ -216,6 +216,30 @@ button[type="submit"]::after {
     content: "CONTINUAR";
 }
 
+/* === MODIFICACIONES PARA EL PASO DEL DONANTE (GRID) === */
+.dsf__donor {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 12px !important;
+    width: 100% !important;
+}
+
+/* Campos que ocupan las 2 columnas */
+.donor-email,
+.donor-phone,
+.donor-cellphone,
+.donor-phone-area,
+.donor-phone-number,
+[class*="phone"] {
+    grid-column: span 2 / span 2 !important;
+}
+
+/* Ajuste para que los inputs de teléfono se vean bien */
+.dsf__group:has(input[type="tel"]),
+.dsf__group:has(input[name*="phone"]) {
+    display: flex !important;
+}
+
 /* PASO 3: Pago (Detectado por .dsf__payment o .dsf__card-data) */
 .dsf:has(.dsf__payment) .dsf__button-next::after,
 .dsf:has(.dsf__card-data) .dsf__button-next::after {
