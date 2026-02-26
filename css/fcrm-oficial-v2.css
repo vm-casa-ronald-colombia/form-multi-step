@@ -159,7 +159,7 @@ form.dsf::before {
 }
 
 .dsf__group:has([id*="phone"]) label::before {
-    content: "Número de WhatsApp (ej: +57 300 123 4567)";
+    content: "Número de WhatsApp (ej: 300 123 4567)";
     font-size: 13px !important;
     color: #333333 !important;
     /* Gris solicitado */
@@ -198,9 +198,10 @@ form.dsf::before {
 }
 
 /* Ocultar placeholder simulado solo cuando hay FOCO (ya que no tienen placeholder nativo para :placeholder-shown) */
+/* Etiquetas siempre visibles según petición del usuario */
 .dsf__group:has(input:focus) label {
-    opacity: 0 !important;
-    visibility: hidden !important;
+    opacity: 1 !important;
+    visibility: visible !important;
 }
 
 /* Ocultar mensajes de error rojos que desajustan el diseño */
