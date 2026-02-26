@@ -30,9 +30,12 @@ body {
     width: 100% !important;
     max-width: 420px !important;
     margin: 0 auto !important;
-    padding: 20px 0 !important;
-    background: transparent !important;
-    box-shadow: none !important;
+    padding: 40px 30px !important;
+    /* Más aire interno */
+    background: #ffffff !important;
+    /* RESTAURADO BLANCO */
+    border-radius: 12px !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1) !important;
     border: none !important;
     position: relative;
     padding-top: 100px !important;
@@ -230,14 +233,19 @@ button[type="submit"]::after {
 .donor-cellphone,
 .donor-phone-area,
 .donor-phone-number,
+.dsf__group:has(input[type="tel"]),
+.dsf__group:has(input[name*="phone"]),
 [class*="phone"] {
     grid-column: span 2 / span 2 !important;
+    width: 100% !important;
 }
 
 /* Ajuste para que los inputs de teléfono se vean bien */
 .dsf__group:has(input[type="tel"]),
 .dsf__group:has(input[name*="phone"]) {
     display: flex !important;
+    flex-direction: column !important;
+    /* Stacked 100% cada uno si hay varios */
 }
 
 /* PASO 3: Pago (Detectado por .dsf__payment o .dsf__card-data) */
