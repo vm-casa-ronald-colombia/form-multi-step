@@ -161,10 +161,8 @@ input[type="tel"]:focus,
     visibility: visible !important;
 }
 
-/* Ocultar placeholder simulado solo cuando hay FOCO o hay contenido */
-/* Como Donar Online no usa placeholders, usamos :focus y :not(:placeholder-shown) como fallback */
-.dsf__group:has(input:focus) label,
-.dsf__group:has(input:not(:placeholder-shown)) label {
+/* Ocultar placeholder simulado solo cuando hay FOCO (ya que no tienen placeholder nativo para :placeholder-shown) */
+.dsf__group:has(input:focus) label {
     opacity: 0 !important;
     visibility: hidden !important;
 }
@@ -175,7 +173,8 @@ span[class*="text-red"],
 p[class*="text-red"],
 div.invalid-feedback,
 .dsf__group span:not(.dsf__label),
-[class*="error"] {
+[class*="error"],
+.text-danger {
     display: none !important;
 }
 
