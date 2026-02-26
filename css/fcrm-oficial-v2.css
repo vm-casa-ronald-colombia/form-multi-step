@@ -98,9 +98,10 @@ input[type="tel"]:focus,
 .dsf__group label {
     display: block !important;
     font-size: 13px !important;
-    font-weight: 600 !important;
-    color: var(--color-blue) !important;
-    /* Azul Ronald para contraste */
+    font-weight: 500 !important;
+    /* Menos negrita solicitado */
+    color: #333333 !important;
+    /* Color gris solicitado */
     margin-bottom: 5px !important;
     text-transform: none !important;
     letter-spacing: normal !important;
@@ -121,21 +122,25 @@ input[type="tel"]:focus,
     /* Ocultar texto original */
     visibility: visible !important;
     height: auto !important;
-    position: absolute !important;
-    top: 24px !important;
-    /* Mitad de 48px */
-    left: 16px !important;
-    transform: translateY(-50%) !important;
+    position: relative !important;
+    /* Cambiado de absolute para que sea etiqueta arriba */
+    top: auto !important;
+    left: 0 !important;
+    transform: none !important;
     z-index: 10 !important;
     pointer-events: none !important;
     display: block !important;
     line-height: normal !important;
+    margin-bottom: 5px !important;
 }
 
 .dsf__group:has([id*="phone"]) label::before {
     content: "Número de WhatsApp (ej: +57 300 123 4567)";
-    font-size: 14px !important;
-    color: #999 !important;
+    font-size: 13px !important;
+    color: #333333 !important;
+    /* Gris solicitado */
+    font-weight: 500 !important;
+    /* Quitar negrita solicitado */
     visibility: visible !important;
 }
 
@@ -146,21 +151,25 @@ input[type="tel"]:focus,
     /* Ocultar texto original */
     visibility: visible !important;
     height: auto !important;
-    position: absolute !important;
-    top: 24px !important;
-    /* Mitad de 48px */
-    left: 16px !important;
-    transform: translateY(-50%) !important;
+    position: relative !important;
+    /* Cambiado de absolute para que sea etiqueta arriba */
+    top: auto !important;
+    left: 0 !important;
+    transform: none !important;
     z-index: 10 !important;
     pointer-events: none !important;
     display: block !important;
     line-height: normal !important;
+    margin-bottom: 5px !important;
 }
 
 .dsf__group:has(input[id*="textfield"]) label::before {
     content: "Número de ID";
-    font-size: 14px !important;
-    color: #999 !important;
+    font-size: 13px !important;
+    color: #333333 !important;
+    /* Gris solicitado */
+    font-weight: 500 !important;
+    /* Quitar negrita solicitado */
     visibility: visible !important;
 }
 
