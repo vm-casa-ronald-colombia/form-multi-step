@@ -32,8 +32,8 @@ body {
     margin: 0 auto !important;
     padding: 40px 30px !important;
     /* Más aire interno */
-    background: #ffffff !important;
-    /* RESTAURADO BLANCO */
+    background: transparent !important;
+    /* TRANSPARENCIA TOTAL SOLICITADA */
     border-radius: 12px !important;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1) !important;
     border: none !important;
@@ -235,6 +235,9 @@ button[type="submit"]::after {
 .donor-phone-number,
 .dsf__group:has(input[type="tel"]),
 .dsf__group:has(input[name*="phone"]),
+.dsf__group:has([id*="phone"]),
+.dsf__group:has([data-widget*="phone"]),
+[id*="phone"],
 [class*="phone"] {
     grid-column: span 2 / span 2 !important;
     width: 100% !important;
@@ -242,7 +245,8 @@ button[type="submit"]::after {
 
 /* Ajuste para que los inputs de teléfono se vean bien */
 .dsf__group:has(input[type="tel"]),
-.dsf__group:has(input[name*="phone"]) {
+.dsf__group:has(input[name*="phone"]),
+.dsf__group:has([id*="phone"]) {
     display: flex !important;
     flex-direction: column !important;
     /* Stacked 100% cada uno si hay varios */
