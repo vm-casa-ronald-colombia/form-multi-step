@@ -31,9 +31,9 @@ body {
     max-width: 420px !important;
     margin: 0 auto !important;
     padding: 25px 15px !important;
-    /* Padding solicitado: 25px arriba/abajo, 15px lados */
-    padding-top: 125px !important;
-    /* Ajuste para que el título absoluto no tape los campos (100px título + 25px libres) */
+    /* Padding solicitado: 25px abajo, 15px lados */
+    padding-top: 110px !important;
+    /* Ajuste solicitado: 100px título + 10px libres (antes 25px) */
     background: transparent !important;
     /* TRANSPARENCIA TOTAL */
     border-radius: 12px !important;
@@ -112,20 +112,20 @@ input[type="tel"]:focus,
 }
 
 /* PLACEHOLDER SIMULADO PARA TELÉFONO (WhatsApp) */
-/* El input de teléfono no trae placeholder nativo, así que usamos su label */
 .dsf__group:has([id*="phone"]) label {
     font-size: 14px !important;
-    color: #999 !important;
+    color: transparent !important;
+    /* Ocultar texto original */
     visibility: visible !important;
     height: auto !important;
     position: absolute !important;
-    top: 50% !important;
+    top: 24px !important;
+    /* Mitad de 48px */
     left: 16px !important;
     transform: translateY(-50%) !important;
     z-index: 10 !important;
     pointer-events: none !important;
     display: block !important;
-    /* Cambiado de flex para evitar líneas raras */
     line-height: normal !important;
 }
 
@@ -133,21 +133,19 @@ input[type="tel"]:focus,
     content: "Número de WhatsApp (ej: +57 300 123 4567)";
     font-size: 14px !important;
     color: #999 !important;
-}
-
-/* Ocultar texto original del label de teléfono */
-.dsf__group:has([id*="phone"]) label {
-    font-size: 0 !important;
+    visibility: visible !important;
 }
 
 /* PLACEHOLDER SIMULADO PARA NÚMERO DE ID */
 .dsf__group:has(input[id*="textfield"]) label {
     font-size: 14px !important;
-    color: #999 !important;
+    color: transparent !important;
+    /* Ocultar texto original */
     visibility: visible !important;
     height: auto !important;
     position: absolute !important;
-    top: 50% !important;
+    top: 24px !important;
+    /* Mitad de 48px */
     left: 16px !important;
     transform: translateY(-50%) !important;
     z-index: 10 !important;
@@ -160,24 +158,24 @@ input[type="tel"]:focus,
     content: "Número de ID";
     font-size: 14px !important;
     color: #999 !important;
+    visibility: visible !important;
 }
 
-/* Ocultar texto original del label de ID */
-.dsf__group:has(input[id*="textfield"]) label {
-    font-size: 0 !important;
-}
-
-/* Ocultar placeholder simulado cuando el input tiene foco o contenido */
+/* Ocultar placeholder simulado solo cuando hay FOCO o hay contenido */
+/* Como Donar Online no usa placeholders, usamos :focus y :not(:placeholder-shown) como fallback */
 .dsf__group:has(input:focus) label,
 .dsf__group:has(input:not(:placeholder-shown)) label {
-    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
 }
 
 /* Ocultar mensajes de error rojos que desajustan el diseño */
 .dsf__error-message,
-span.text-red-600,
-p.text-red-500,
-div.invalid-feedback {
+span[class*="text-red"],
+p[class*="text-red"],
+div.invalid-feedback,
+.dsf__group span:not(.dsf__label),
+[class*="error"] {
     display: none !important;
 }
 
